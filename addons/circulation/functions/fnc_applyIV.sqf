@@ -20,23 +20,37 @@
  * Public: No
  */
 
-params ["_medic", "_patient", "_bodyPart"];
+params ["_medic", "_patient", "_bodyPart", "", "", "_usedItem"];
 
 _patient setVariable [QGVAR(IVplaced), true, true];
 
-switch (_bodyPart) do {
-	case "leftarm": {_patient setVariable [QGVAR(IVsite), 2, true];
-	};
-	case "rightarm": {_patient setVariable [QGVAR(IVsite), 3, true];
-	};
-	case "leftleg": {_patient setVariable [QGVAR(IVsite), 4, true];
-	};
-	case "rightleg": {_patient setVariable [QGVAR(IVsite), 5, true];
-	};
+if (_usedItem == "kat_IV_16") then {
+    switch (_bodyPart) do {
+    	case "leftarm": {_patient setVariable [QGVAR(IVsite), 2, true];
+    	};
+    	case "rightarm": {_patient setVariable [QGVAR(IVsite), 3, true];
+    	};
+    	case "leftleg": {_patient setVariable [QGVAR(IVsite), 4, true];
+    	};
+    	case "rightleg": {_patient setVariable [QGVAR(IVsite), 5, true];
+    	};
+    };
+
+    [_patient, "activity", LSTRING(iv_log), [[_medic] call ace_common_fnc_getName, "16g IV"]] call ace_medical_treatment_fnc_addToLog;
+    [_patient, "16g IV"] call ace_medical_treatment_fnc_addToTriageCard;
+} else {
+    _patient setVariable [QGVAR(IVsite), 1, true];
+
+    [_patient, 0.6] call ace_medical_status_fnc_adjustPainLevel;
+
+    [_patient, "activity", LSTRING(iv_log), [[_medic] call ace_common_fnc_getName, "FAST IO"]] call ace_medical_treatment_fnc_addToLog;
+    [_patient, "FAST IO"] call ace_medical_treatment_fnc_addToTriageCard;
 };
 
-[_patient, "activity", LSTRING(iv_log), [[_medic] call ace_common_fnc_getName, "16g IV"]] call ace_medical_treatment_fnc_addToLog;
-[_patient, "16g IV"] call ace_medical_treatment_fnc_addToTriageCard;
+[{
+    private _patient = _this select 0;
+    [_patient, _patient] call acep_circulation_fnc_retrieveIV;
+}, [_patient], GVAR(IVdrop)] call CBA_fnc_waitAndExecute;
 
 [{
     params ["_args", "_idPFH"];

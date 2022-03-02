@@ -26,13 +26,18 @@ if (!isNil {_unit getVariable ["ace_medical_ivBags",[]]}) then {
     private _bloodBags = _unit getVariable ["ace_medical_ivBags", []];
     private _tourniquets = GET_TOURNIQUETS(_unit);
     private _flow = ace_medical_ivFlowRate;
+    private _pulse = GET_HEART_RATE(_unit);
+    private _alpha = _unit getVariable [QGVAR(alphaAction), 1];
 
+    if (_pulse < 20) then {
+        _flow = 0;
+    };
 
     _bloodBags = _bloodBags apply {
         _x params ["_bagVolumeRemaining", "_type", "_bodyPart"];
 
         if (_tourniquets select _bodyPart == 0) then {
-            private _bagChange = (_deltaT * _flow * 4.16) min _bagVolumeRemaining; // absolute value of the change in miliLiters
+            private _bagChange = (_deltaT * _flow * 4.16 * _alpha) min _bagVolumeRemaining; // absolute value of the change in miliLiters
             _bagVolumeRemaining = _bagVolumeRemaining - _bagChange;
             _bloodVolumeChange = _bloodVolumeChange + (_bagChange / 1000);
         };

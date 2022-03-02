@@ -5,17 +5,29 @@ class CfgPatches {
         name = COMPONENT_NAME;
         requiredVersion = REQUIRED_VERSION;
         units[] = {
-            kat_PainkillerItem,
-            kat_X_AEDItem
+            "kat_PainkillerItem",
+            "kat_X_AEDItem"
         };
         weapons[] = {
-            kat_Painkiller,
-            kat_PainkillerItem,
-            kat_IV_16,
-            kat_carbonate,
-            kat_naloxone,
-            kat_TXA,
-            kat_X_AED
+            "kat_Painkiller",
+            "kat_PainkillerItem",
+            "kat_IV_16",
+            "kat_IO_FAST",
+            "kat_Carbonate",
+            "kat_CarbonateItem",
+            "kat_naloxone",
+            "kat_TXA",
+            "kat_X_AED",
+            "kat_norepinephrine",
+            "kat_phenylephrine",
+            "kat_nitroglycerin",
+            "kat_etomidate",
+            "kat_lidocaine",
+            "kat_lorazepam",
+            "kat_flumazenil"
+            "kat_scalpel",
+            "kat_retractor",
+            "kat_clamp"
         };
         magazines[] = { };
         requiredAddons[] = {

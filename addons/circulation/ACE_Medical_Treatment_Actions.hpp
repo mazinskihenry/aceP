@@ -8,9 +8,12 @@ class ACE_Medical_Treatment_Actions {
     class CPR;
 
     class BloodIV: BasicBandage {
-    condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
     };
-
+    class Epinephrine: Morphine {
+        callbackSuccess = "[_medic, _patient, _bodyPart, _className, _itemUser, _usedItem] call ace_medical_treatment_fnc_medication; [_medic, _patient, -0.15] call aceP_circulation_fnc_alphaAction;";
+    };
     class Painkillers: Morphine {
         displayName = CSTRING(Inject_Box_Painkillers);
         displayNameProgress = CSTRING(Using);
@@ -32,29 +35,18 @@ class ACE_Medical_Treatment_Actions {
         allowedSelections[] = {"Head"};
         allowSelfTreatment = 0;
         medicRequired = 1;
-        treatmentTime = QGVAR(carboApp);
-        items[] = {"kat_carbonate"};
-        condition = QUOTE(!([_patient] call ace_common_fnc_isAwake)) && QGVAR(carbonateActive);
+        treatmentTime = 5;
+        items[] = {};
+        condition = "[_medic, 'kat_Carbonate'] call ace_common_fnc_hasMagazine || [_patient, 'kat_Carbonate'] call ace_common_fnc_hasMagazine";
         patientStateCondition = 0;
         callbackSuccess = QUOTE([ARR_3(_player, _patient, 'Carbonate')] call FUNC(treatmentAdvanced_Carbonate));
-        callbackFailure = "";
-        callbackProgress = "";
-        consumeItem = 1;
-        animationPatient = "";
-        animationPatientUnconscious = "";
-        animationPatientUnconsciousExcludeOn[] = {""};
-        animationMedic = "AinvPknlMstpSlayWrflDnon_medicOther";
-        animationMedicProne = "AinvPpneMstpSlayW[wpn]Dnon_medicOther";
-        animationMedicSelf = "AinvPknlMstpSlayW[wpn]Dnon_medic";
-        animationMedicSelfProne = "AinvPpneMstpSlayW[wpn]Dnon_medic";
-        litter[] = {};
     };
     class Naloxone: Carbonate {
         displayName = CSTRING(Take_Naloxone);
         allowedSelections[] = {"Head"};
         allowSelfTreatment = 0;
         medicRequired = 1;
-        treatmentTime = QGVAR(naloApp);
+        treatmentTime = 5;
         items[] = {"kat_naloxone"};
         condition = QGVAR(naloxoneActive);
         patientStateCondition = 0;
@@ -62,14 +54,61 @@ class ACE_Medical_Treatment_Actions {
     };
     class TXA: Carbonate {
         displayName = CSTRING(Take_TXA);
-        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         allowSelfTreatment = 0;
         medicRequired = 1;
-        treatmentTime = 5;
+        treatmentTime = QGVAR(PushTime);
         items[] = {"kat_TXA"};
-        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QGVAR(txaActive);
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QGVAR(txaActive) && QFUNC(removeIV);
         patientStateCondition = 0;
         callbackSuccess = QUOTE([ARR_2(_player, _patient)] call FUNC(treatmentAdvanced_TXA));
+    };
+    class Norepinephrine: Carbonate {
+        displayName = CSTRING(Take_Norep);
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = 1;
+        treatmentTime = QGVAR(PushTime);
+        items[] = {"kat_norepinephrine"};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
+        patientStateCondition = 0;
+        callbackSuccess = "[_medic, _patient, _bodyPart, _className, _itemUser, _usedItem] call ace_medical_treatment_fnc_medication; [_medic, _patient, -0.3] call aceP_circulation_fnc_alphaAction;";;
+    };
+    class Phenylephrine: Carbonate {
+        displayName = CSTRING(Take_Phenyl);
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = 1;
+        treatmentTime = QGVAR(PushTime);
+        items[] = {"kat_phenylephrine"};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
+        patientStateCondition = 0;
+        callbackSuccess = "[_medic, _patient, _bodyPart, _className, _itemUser, _usedItem] call ace_medical_treatment_fnc_medication; [_medic, _patient, -0.5] call aceP_circulation_fnc_alphaAction;";;
+    };
+    class Nitroglycerin: Carbonate {
+        displayName = CSTRING(Take_Nitro);
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = 1;
+        treatmentTime = QGVAR(PushTime);
+        items[] = {"kat_nitroglycerin"};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
+        patientStateCondition = 0;
+        callbackSuccess = "[_medic, _patient, _bodyPart, _className, _itemUser, _usedItem] call ace_medical_treatment_fnc_medication; [_medic, _patient, 0.3] call aceP_circulation_fnc_alphaAction;";;
+    };
+    class Reorientation: Carbonate {
+        displayName = CSTRING(Take_Reorient);
+        displayNameProgress = CSTRING(Reorienting);
+        allowedSelections[] = {"Head"};
+        allowSelfTreatment = 0;
+        medicRequired = 1;
+        treatmentTime = 1;
+        items[] = {};
+        condition = QUOTE(!([_patient] call ace_common_fnc_isAwake));
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_2(_player, _patient)] call FUNC(treatmentAdvanced_Reorientation));
+        animationMedic = "AinvPknlMstpSnonWnonDnon_medicUp4";
+        animationMedicProne = "AinvPknlMstpSnonWnonDnon_medicUp4";
     };
     class CheckBloodPressure: CheckPulse { // Remove the ability to check blood pressure at the head
         allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
@@ -80,18 +119,31 @@ class ACE_Medical_Treatment_Actions {
     class ApplyIV: ApplyTourniquet {
         displayName = CSTRING(Apply_IV_16);
         displayNameProgress = CSTRING(Applying_IV);
-        medicRequired = QUOTE(ace_medical_medicIV);
+        medicRequired = QGVAR(IVmedic);
         category = "advanced";
         allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         items[] = {"kat_IV_16"};
-        condition = QUOTE(!(_patient getVariable [ARR_2(QQGVAR(IVplaced), false)]));
+        condition = QUOTE(!(_patient getVariable [ARR_2(QQGVAR(IVplaced), false)])) && QFUNC(checkIV);
         treatmentTime = QGVAR(IVestablish);
+        callbackSuccess = QFUNC(applyIV);
+        litter[] = {};
+    };
+    class ApplyIO: ApplyIV {
+        displayName = CSTRING(Apply_IO_45);
+        displayNameProgress = CSTRING(Applying_IV);
+        medicRequired = QGVAR(IVmedic);
+        category = "advanced";
+        allowedSelections[] = {"Body"};
+        items[] = {"kat_IO_FAST"};
+        condition = QUOTE(!(_patient getVariable [ARR_2(QQGVAR(IVplaced), false)]));
+        treatmentTime = QGVAR(IOestablish);
         callbackSuccess = QFUNC(applyIV);
         litter[] = {};
     };
     class RemoveIV: ApplyTourniquet {
         displayName = CSTRING(Remove_IV);
         displayNameProgress = CSTRING(Removing_IV);
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         treatmentTime = 3;
         items[] = {};
         condition = QFUNC(removeIV);
@@ -121,7 +173,6 @@ class ACE_Medical_Treatment_Actions {
         condition = "aceP_circulation_fnc_AEDStationCondition";
         treatmentLocations = 0;
     };
-    
     class Defibrillator_AED_X: Defibrillator {
         displayName = CSTRING(AED_X_Action_Use);
         displayNameProgress = CSTRING(AED_X_Action_Progress);
@@ -132,12 +183,11 @@ class ACE_Medical_Treatment_Actions {
         medicRequired = QGVAR(medLvl_AED_X);
         icon = QPATHTOF(ui\X_Series-Device_W.paa);
     };
-    
     class X_Defibrillator_AED_X: Defibrillator_AED_X {
         displayName = CSTRING(X_Action_Use);
         displayNameProgress = CSTRING(X_Action_Progress);
         items[] = {"kat_X_AED"};
-        condition = QUOTE(!(_patient getVariable [ARR_2(QQGVAR(X), false)]));
+        condition = QUOTE(!(_patient getVariable [ARR_2(QQGVAR(X), false)])) && QUOTE(!(_patient getVariable [ARR_2(QQGVAR(vehicleTrue), false)]));
         consumeItem = 1;
         medicRequired = QGVAR(medLvl_AED_X);
         callbackProgress = "";
@@ -146,18 +196,204 @@ class ACE_Medical_Treatment_Actions {
         callbackSuccess = QFUNC(treatmentAdvanced_X);
         icon = QPATHTOF(ui\X_Series-Device_W.paa);
     };
-
     class Remove_X_Defibrillator: Defibrillator_AED_X {
         displayName = CSTRING(X_Action_Remove);
         displayNameProgress = CSTRING(X_Remove_Action_Progress);
         items[] = {};
-        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(X), true)]);
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(X), true)]) && QUOTE(!(_patient getVariable [ARR_2(QQGVAR(vehicleTrue), false)]));
         treatmentTime = 5;
         medicRequired = 0;
         callbackProgress = "";
         callbackStart = "";
         callbackFailure = "";
-        callbackSuccess = QUOTE([ARR_2(_medic, _patient)] call FUNC(returnAED_X));
+        callbackSuccess = QUOTE([ARR_3(_medic, _patient, true)] call FUNC(returnAED_X));
         icon = QPATHTOF(ui\X_Series-Device_W.paa);
     };
+    class Defibrillator_AED_X_vehicle: Defibrillator {
+        displayName = CSTRING(Vehicle_Action_Use);
+        displayNameProgress = CSTRING(AED_X_Action_Progress);
+        items[] = {};
+        callbackSuccess = "[_medic, _patient, 'AED-X'] call aceP_circulation_fnc_AEDSuccess; _patient setVariable ['aceP_AEDinUse', false, true];";
+        //condition = QUOTE((_patient getVariable [ARR_2(QQGVAR(X), false)]) || [ARR_2(_medic, 'kat_AED')] call ace_common_fnc_hasItem || [ARR_2(_medic, 'kat_X_AED')] call ace_common_fnc_hasItem);
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(vehicleTrue), true)]);
+        medicRequired = QGVAR(medLvl_AED_X);
+        icon = QPATHTOF(ui\X_Series-Device_W.paa);
+    };
+    class X_Defibrillator_AED_X_vehicle: Defibrillator_AED_X_vehicle {
+        displayName = CSTRING(AED_Vehicle_Action_Use);
+        displayNameProgress = CSTRING(X_Action_Progress);
+        items[] = {};
+        condition = QUOTE(!(_patient getVariable [ARR_2(QQGVAR(X), false)])) && QFUNC(vehicleCheck);
+        consumeItem = 1;
+        medicRequired = QGVAR(medLvl_AED_X);
+        callbackProgress = "";
+        callbackStart = "";
+        callbackFailure = "";
+        callbackSuccess = QFUNC(treatmentAdvanced_X_Vehicle);
+        icon = QPATHTOF(ui\X_Series-Device_W.paa);
+    };
+    class Remove_X_Defibrillator_vehicle: Defibrillator_AED_X_vehicle {
+        displayName = CSTRING(Vehicle_Action_Remove);
+        displayNameProgress = CSTRING(X_Remove_Action_Progress);
+        items[] = {};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(vehicleTrue), true)]) && QUOTE(_patient getVariable [ARR_2(QQGVAR(X), true)]);
+        treatmentTime = 5;
+        medicRequired = 0;
+        callbackProgress = "";
+        callbackStart = "";
+        callbackFailure = "";
+        callbackSuccess = QUOTE([ARR_3(_medic, _patient, false)] call FUNC(returnAED_X));
+        icon = QPATHTOF(ui\X_Series-Device_W.paa);
+    };
+    class CheckFracture: CheckPulse {
+        displayName = "Check Fracture";
+        displayNameProgress = "Checking Fracture";
+        category = "surgery";
+        treatmentLocations = 0;
+        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 1;
+        medicRequired = QGVAR(fractureCheck);
+        treatmentTime = 8;
+        items[] = {};
+        condition = QUOTE(([ARR_4(_medic, _patient, _bodyPart, 5)] call FUNC(fractureCheck)) && (GVAR(enable_fracture)));
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_3(_medic, _patient, _bodyPart)] call FUNC(fractureSelect));
+    };
+    class ClosedReduction: CheckFracture {
+        displayName = "Perform Closed Reduction";
+        displayNameProgress = "Performing Reduction";
+        category = "surgery";
+        treatmentLocations = QGVAR(closedLocation);
+        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = QGVAR(closedReduction);
+        treatmentTime = QGVAR(closedTime);
+        items[] = {};
+        condition = QUOTE([ARR_4(_medic, _patient, _bodyPart, 1)] call FUNC(fractureCheck));
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_3(_medic, _patient, _bodyPart)] call FUNC(closedFractureReduction));
+    };
+    class OpenReduction: CheckFracture {
+        displayName = "Perform Open Reduction";
+        displayNameProgress = "Performing Reduction";
+        category = "surgery";
+        treatmentLocations = QGVAR(surgicalLocation);
+        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = QGVAR(surgicalAction);
+        treatmentTime = QGVAR(openTime);
+        items[] = {};
+        condition = QUOTE([ARR_4(_medic, _patient, _bodyPart, 3.5)] call FUNC(openFractureCheck));
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_3(_medic, _patient, _bodyPart)] call FUNC(openFractureReduction));
+    };
+    class Lidocaine: Carbonate {
+        displayName = "Push Lidocaine";
+        category = "surgery";
+        treatmentLocations = 0;
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = 1;
+        treatmentTime = QGVAR(PushTime);
+        items[] = {"kat_lidocaine"};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
+        patientStateCondition = 0;
+        callbackSuccess = "ace_medical_treatment_fnc_medication";
+    };
+    class Etomidate: Carbonate {
+        displayName = "Push Etomidate";
+        category = "surgery";
+        treatmentLocations = 0;
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = 1;
+        treatmentTime = QGVAR(PushTime);
+        items[] = {"kat_etomidate"};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
+        patientStateCondition = 0;
+        callbackSuccess = "[_medic, _patient, _bodyPart, _className, _itemUser, _usedItem] call ace_medical_treatment_fnc_medication; [_medic, _patient, 0.15] call aceP_circulation_fnc_alphaAction;";
+    };
+    class Lorazepam: Carbonate {
+        displayName = "Push Lorazepam";
+        category = "surgery";
+        treatmentLocations = 0;
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = 1;
+        treatmentTime = QGVAR(PushTime);
+        items[] = {"kat_lorazepam"};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_3(_player, _patient, 'Lorazepam')] call FUNC(treatmentAdvanced_Generic));
+    };
+    class Flumazenil: Carbonate {
+        displayName = "Push Flumazenil";
+        category = "surgery";
+        treatmentLocations = 0;
+        allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = 1;
+        treatmentTime = QGVAR(PushTime);
+        items[] = {"kat_flumazenil"};
+        condition = QUOTE(_patient getVariable [ARR_2(QQGVAR(IVplaced), true)]) && QFUNC(removeIV);
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_3(_player, _patient, 'Flumazenil')] call FUNC(treatmentAdvanced_Generic));
+    };
+    class Expose: BasicBandage {
+        displayName = "Expose the fracture";
+        displayNameProgress = "Exposing";
+        category = "surgery";
+        treatmentLocations = QGVAR(surgicalLocation);
+        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = QGVAR(surgicalAction);
+        treatmentTime = QGVAR(surgicalTime);
+        items[] = {"kat_retractor"};
+        condition = QUOTE([ARR_4(_medic, _patient, _bodyPart, 2.1)] call FUNC(openFractureCheck));
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_4(_medic, _patient, _bodyPart, 2.1)] call FUNC(openFractureProgress));
+    };
+    class Incision: BasicBandage {
+        displayName = "Peform Incision";
+        displayNameProgress = "Performing Incision";
+        category = "surgery";
+        treatmentLocations = QGVAR(surgicalLocation);
+        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = QGVAR(surgicalAction);
+        treatmentTime = QGVAR(surgicalTime);
+        items[] = {"kat_scalpel"};
+        condition = QUOTE([ARR_4(_medic, _patient, _bodyPart, 2)] call FUNC(fractureCheck));
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_3(_medic, _patient, _bodyPart)] call FUNC(openFractureIncision));
+    };
+    class Clamp: BasicBandage {
+        displayName = "Clamp Fracture";
+        displayNameProgress = "Clamping Fracture";
+        category = "surgery";
+        treatmentLocations = QGVAR(surgicalLocation);
+        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = QGVAR(surgicalAction);
+        treatmentTime = QGVAR(surgicalTime);
+        items[] = {"kat_clamp"};
+        condition = QUOTE([ARR_4(_medic, _patient, _bodyPart, 3.3)] call FUNC(openFractureCheck));
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_4(_medic, _patient, _bodyPart, 3.3)] call FUNC(openFractureProgress));
+    };
+    class Irrigate: BasicBandage {
+        displayName = "Irrigate Wound";
+        displayNameProgress = "Irrigating";
+        category = "surgery";
+        treatmentLocations = QGVAR(surgicalLocation);
+        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 0;
+        medicRequired = QGVAR(surgicalAction);
+        treatmentTime = QGVAR(surgicalTime);
+        items[] = {"ACE_salineIV_250"};
+        condition = QUOTE([ARR_4(_medic, _patient, _bodyPart, 2.3)] call FUNC(openFractureCheck));
+        patientStateCondition = 0;
+        callbackSuccess = QUOTE([ARR_4(_medic, _patient, _bodyPart, 2.3)] call FUNC(openFractureProgress));
+    };
 };
+

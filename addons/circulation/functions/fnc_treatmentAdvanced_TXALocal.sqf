@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: 2LT.Mazinski
- * Locates and Removes 1x Morphine after the administration of Naloxone.
+ * Begins TXA bandaging process
  *
  * Arguments:
  * 0: Medic <OBJECT>
@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player, "Atropine"] call kat_circulation_fnc_treatmentAdvanced_NaloxoneLocal;
+ * [player, "TXA"] call aceP_circulation_fnc_treatmentAdvanced_TXALocal;
  *
  * Public: No
  */
@@ -22,44 +22,41 @@ params ["_target", "_item"];
 [_target, "activity", LSTRING(push_log), [[_medic] call ace_common_fnc_getName, "TXA"]] call ace_medical_treatment_fnc_addToLog;
 [_target, "TXA", 5, 120, 0, 0, 0] call ace_medical_status_fnc_addMedicationAdjustment;
 
-
 [{
     params ["_args", "_idPFH"];
     _args params ["_target"];
 
-    private _medicationArray = _target getVariable ["ace_medical_medications", []];
-    private _TXA = false;
-    private _TXAactive = true;
-
-    {
-        _x params ["_medication"];
-
-        if (_medication == "TXA") exitWith {
-            _TXA = true;
-       };
-    } forEach (_medicationArray);
+    private _stitchableWounds = _target call ace_medical_treatment_fnc_getStitchableWounds;
+    private _count = [_target, "TXA"] call ace_medical_status_fnc_getMedicationCount;
 
     private _alive = alive _target;
 
-    if ((!_alive) || (_TXA == false)) exitWith {
+    if ((! _alive) || (_count == 0) || (_stitchableWounds isEqualTo [])) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler; 
     };
 
-    private _openWounds = _target getVariable ["ace_medical_openWounds", []];
-    private _once = false;
+    private _bandagedWounds = GET_BANDAGED_WOUNDS(_target);
+    private _stitchedWounds = GET_STITCHED_WOUNDS(_target);
 
-    {
-        _x params ["", "_bodyPart", "_amount"];
+    private _treatedWound = _bandagedWounds deleteAt (_bandagedWounds find (_stitchableWounds select 0));
+    _treatedWound params ["_treatedID", "_treatedBodyPartN", "_treatedAmountOf"];
 
-        if (_once == false && _amount > 0) then {
-            private _part = ALL_BODY_PARTS select _bodyPart;
-            ["ace_medical_treatment_bandageLocal", [_target, _part, "QuikClot"], _target] call CBA_fnc_targetEvent;
+    private _woundIndex = _stitchedWounds findIf {
+        _x params ["_classID", "_bodyPartN"];
 
-            _once = true;
-        };
+        _classID == _treatedID && {_bodyPartN == _treatedBodyPartN}
+    };
 
-    } forEach _openWounds;
+    if (_woundIndex == -1) then {
+        _stitchedWounds pushBack _treatedWound;
+    } else {
+        private _wound = _stitchedWounds select _woundIndex;
+        _wound set [2, (_wound select 2) + _treatedAmountOf];
+    };
 
-}, 5, [_target]] call CBA_fnc_addPerFrameHandler;
+    _target setVariable [VAR_BANDAGED_WOUNDS, _bandagedWounds, true];
+    _target setVariable [VAR_STITCHED_WOUNDS, _stitchedWounds, true];
+
+}, 8, [_target]] call CBA_fnc_addPerFrameHandler;
 
 true

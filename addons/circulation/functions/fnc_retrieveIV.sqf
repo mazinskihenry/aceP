@@ -18,8 +18,18 @@
 
 params ["_medic", "_patient"];
 
+private _site = _patient getVariable [QGVAR(IVsite), 0];
+
+if (GVAR(IVreuse) == true) then {
+    if (_site == 1) then {
+        _medic addItem "kat_IO_FAST";
+    } else {
+        _medic addItem "kat_IV_16";
+    };
+};
+
 _patient setVariable [QGVAR(IVplaced), false, true];
-_medic addItem "kat_IV_16";
+_patient setVariable [QGVAR(IVsite), 0, true];
 
 private _totalIvVolume = 0;
 private _saline = 0;

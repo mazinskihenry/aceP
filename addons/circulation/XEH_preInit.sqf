@@ -12,19 +12,9 @@ PREP_RECOMPILE_END;
     QGVAR(enable),
     "CHECKBOX",
     LLSTRING(SETTING_ENABLE),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - Medications",
     [true],
     true
-] call CBA_Settings_fnc_init;
-
-//location for AED - Defi:
-[
-	QGVAR(naloxoneActive),
-	"CHECKBOX",
-	[LLSTRING(NALOXONE_ACTIVE)],
-	CBA_SETTINGS_CAT,
-	[true],
-	true
 ] call CBA_Settings_fnc_init;
 
 //Activate Naloxone
@@ -32,7 +22,7 @@ PREP_RECOMPILE_END;
     QGVAR(naloxoneActive),
     "CHECKBOX",
     [LLSTRING(NALOXONE_ACTIVE)],
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - Medications",
     [true],
     true
 ] call CBA_Settings_fnc_init;
@@ -42,7 +32,7 @@ PREP_RECOMPILE_END;
     QGVAR(carbonateActive),
     "CHECKBOX",
     [LLSTRING(CARBONATE_ACTIVE)],
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - Medications",
     [true],
     true
 ] call CBA_Settings_fnc_init;
@@ -52,26 +42,35 @@ PREP_RECOMPILE_END;
     QGVAR(txaActive),
     "CHECKBOX",
     [LLSTRING(TXA_ACTIVE)],
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - Medications",
     [true],
     true
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(naloApp),
-    "SLIDER",
-    [LLSTRING(NALOXONE_TIME)],
-    CBA_SETTINGS_CAT,
-    [0.1, 10, 5, 1],
+    QGVAR(IVreuse),
+    "CHECKBOX",
+    [LLSTRING(IV_REUSE)],
+    "ACE Pharmacy - Medications",
+    [false],
     true
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(carboApp),
+    QGVAR(IVmedic),
+    "LIST",
+    [LLSTRING(IV_MEDIC)],
+    "ACE Pharmacy - Medications",
+    [[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(IVdrop),
     "SLIDER",
-    [LLSTRING(CARBONATE_TIME)],
-    CBA_SETTINGS_CAT,
-    [0.1, 10, 5, 1],
+    [LLSTRING(IV_DROP)],
+    "ACE Pharmacy - Medications",
+    [60, 1200, 600, 0],
     true
 ] call CBA_Settings_fnc_init;
 
@@ -79,7 +78,25 @@ PREP_RECOMPILE_END;
     QGVAR(IVestablish),
     "SLIDER",
     [LLSTRING(IV_TIME)],
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - Medications",
+    [0.1, 10, 7, 1],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(IOestablish),
+    "SLIDER",
+    [LLSTRING(IO_TIME)],
+    "ACE Pharmacy - Medications",
+    [0.1, 10, 7, 1],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(PushTime),
+    "SLIDER",
+    [LLSTRING(PUSH_TIME)],
+    "ACE Pharmacy - Medications",
     [0.1, 10, 7, 1],
     true
 ] call CBA_Settings_fnc_init;
@@ -88,7 +105,7 @@ PREP_RECOMPILE_END;
     QGVAR(useLocation_AED),
     "LIST",
     [LLSTRING(LOCATION_AED),LLSTRING(LOCATION_AED_DESCRIPTION)],
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [[0,1,2,3],["STR_ACE_Common_Anywhere", "STR_ACE_Common_Vehicle", "STR_ACE_Medical_Treatment_MedicalFacilities", "STR_ACE_Medical_Treatment_VehiclesAndFacilities"],0],
     true
 ] call CBA_Settings_fnc_init;
@@ -98,7 +115,7 @@ PREP_RECOMPILE_END;
     QGVAR(SuccesCh_AED_X),
     "SLIDER",
     LLSTRING(SUCESSCHANCE_AED_X),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [1, 100, 85, 0],
     true
 ] call CBA_Settings_fnc_init;
@@ -108,7 +125,7 @@ PREP_RECOMPILE_END;
     QGVAR(SuccesCh_AED),
     "SLIDER",
     LLSTRING(SUCESSCHANCE_AED),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [1, 100, 80, 0],
     true
 ] call CBA_Settings_fnc_init;
@@ -118,7 +135,7 @@ PREP_RECOMPILE_END;
     QGVAR(medLvl_AED_X),
     "LIST",
     [LLSTRING(ALLOW_AED_X),LLSTRING(TRAINING_LEVEL_AED_X)],
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
     true
 ] call CBA_settings_fnc_init;
@@ -128,7 +145,7 @@ PREP_RECOMPILE_END;
     QGVAR(distanceLimit_AEDX),
     "SLIDER",
     LLSTRING(DISTANCELIMIT_AED_X),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [2, 100, 30, 0],
     true
 ] call CBA_Settings_fnc_init;
@@ -138,7 +155,7 @@ PREP_RECOMPILE_END;
     QGVAR(timeLimit_AEDX),
     "SLIDER",
     LLSTRING(TIMELIMIT_AED_X),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [60, 14400, 1800, 0],
     true
 ] call CBA_Settings_fnc_init;
@@ -147,7 +164,7 @@ PREP_RECOMPILE_END;
     QGVAR(DeactMon_whileAED_X),
     "CHECKBOX",
     LLSTRING(DEACTIVATE_MONITOR_WHILEAED_X),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [true],
     true
 ] call CBA_Settings_fnc_init;
@@ -158,7 +175,7 @@ PREP_RECOMPILE_END;
     QGVAR(enable_CPR_Chances),
     "CHECKBOX",
     LLSTRING(SETTING_CPR_CHANCES),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [true],
     true
 ] call CBA_Settings_fnc_init;
@@ -168,7 +185,7 @@ PREP_RECOMPILE_END;
     QGVAR(CPR_Chance_Doctor),
     "SLIDER",
     LLSTRING(SETTING_CPR_CHANCE_DOCTOR),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [0,100,40,0],
     true
 ] call CBA_Settings_fnc_init;
@@ -178,7 +195,7 @@ PREP_RECOMPILE_END;
     QGVAR(CPR_Chance_RegularMedic),
     "SLIDER",
     LLSTRING(SETTING_CPR_CHANCE_REGULARMEDIC),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [0,100,30,0],
     true
 ] call CBA_Settings_fnc_init;
@@ -188,8 +205,143 @@ PREP_RECOMPILE_END;
     QGVAR(CPR_Chance_Default),
     "SLIDER",
     LLSTRING(SETTING_CPR_CHANCE_DEFAULT),
-    CBA_SETTINGS_CAT,
+    "ACE Pharmacy - AED",
     [0,100,20,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(simpleChance),
+    "SLIDER",
+    "Simple Fracture Chance",
+    "ACE Pharmacy - AED",
+    [0,100,60,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(compoundChance),
+    "SLIDER",
+    "Compound Fracture Chance",
+    "ACE Pharmacy - AED",
+    [0,100,50,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(enable_fracture),
+    "CHECKBOX",
+    "Enable Advanced Fractures",
+    "ACE Pharmacy - Fracture",
+    [true],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(simpleChance),
+    "SLIDER",
+    "Simple Fracture Chance",
+    "ACE Pharmacy - Fracture",
+    [0,100,60,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(compoundChance),
+    "SLIDER",
+    "Compound Fracture Chance",
+    "ACE Pharmacy - Fracture",
+    [0,100,30,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(etomidateTime),
+    "SLIDER",
+    "Etomidate Timer",
+    "ACE Pharmacy - Fracture",
+    [0,100,45,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(closedTime),
+    "SLIDER",
+    "Closed Reduction Timer",
+    "ACE Pharmacy - Fracture",
+    [0,100,10,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(openTime),
+    "SLIDER",
+    "Open Reduction Timer",
+    "ACE Pharmacy - Fracture",
+    [0,100,15,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(surgicalTime),
+    "SLIDER",
+    "Surgical Action Timer",
+    "ACE Pharmacy - Fracture",
+    [0,100,8,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(incisionTime),
+    "SLIDER",
+    "Incision Timer",
+    "ACE Pharmacy - Fracture",
+    [0,100,10,0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(fractureCheck),
+    "LIST",
+    "Fracture Check Level",
+    "ACE Pharmacy - Fracture",
+    [[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(closedReduction),
+    "LIST",
+    "Closed Reduction Level",
+    "ACE Pharmacy - Fracture",
+    [[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(surgicalAction),
+    "LIST",
+    "Surgical Action Level",
+    "ACE Pharmacy - Fracture",
+    [[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(closedLocation),
+    "LIST",
+    "Closed Reduction Location",
+    "ACE Pharmacy - Fracture",
+    [[0,1,2,3],["STR_ACE_Common_Anywhere", "STR_ACE_Common_Vehicle", "STR_ACE_Medical_Treatment_MedicalFacilities", "STR_ACE_Medical_Treatment_VehiclesAndFacilities"],0],
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(surgicalLocation),
+    "LIST",
+    "Surgical Action Locations",
+    "ACE Pharmacy - Fracture",
+    [[0,1,2,3],["STR_ACE_Common_Anywhere", "STR_ACE_Common_Vehicle", "STR_ACE_Medical_Treatment_MedicalFacilities", "STR_ACE_Medical_Treatment_VehiclesAndFacilities"],2],
     true
 ] call CBA_Settings_fnc_init;
 

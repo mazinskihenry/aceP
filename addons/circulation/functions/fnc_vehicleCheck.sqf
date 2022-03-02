@@ -30,12 +30,17 @@ private _inventory = [];
     _inventory = itemCargo _x;
 
     if (_x isKindOf "LandVehicle" || _x isKindOf "Helicopter") then {
-	    {
-			if (_x == "kat_X_AED") then {
-				_return = true;
-			};
-		} forEach _inventory;
-	};
+        {
+            if (_x == "kat_X_AED") then {
+                _return = true;
+            };
+        } forEach _inventory;
+
+        if (_return == true) then {
+            _patient setVariable [QGVAR(AEDvehicle), _x, true];
+            _patient setVariable [QGVAR(vehicleTrue), true, true];
+        };
+    };
 } forEach _checkArray;
 
 _return

@@ -54,23 +54,6 @@ switch (GET_HEMORRHAGE(_target)) do {
     };
 };
 
-// Indicate if a tourniquet is applied
-if (HAS_TOURNIQUET_APPLIED_ON(_target,_selectionN)) then {
-    _entries pushBack [localize "STR_ACE_medical_gui_Status_Tourniquet_Applied", [0.77, 0.51, 0.08, 1]];
-};
-
-// Indicate current body part fracture status
-switch (GET_FRACTURES(_target) select _selectionN) do {
-    case 1: {
-        _entries pushBack [localize "STR_ACE_medical_gui_Status_Fractured", [1, 0, 0, 1]];
-    };
-    case -1: {
-        if (ace_medical_fractures == 2) then { // Ignore if the splint has no effect
-            _entries pushBack [localize "STR_ACE_medical_gui_Status_SplintApplied", [1, 1, 1, 1]];
-        };
-    };
-};
-
 // Indicate the amount of pain the unit is in
 if (_target call ace_common_fnc_isAwake) then {
     private _pain = GET_PAIN_PERCEIVED(_target);
@@ -79,7 +62,7 @@ if (_target call ace_common_fnc_isAwake) then {
             case (_pain > 0.5): {
                 "STR_ACE_medical_treatment_Status_SeverePain";
             };
-            case (_pain > 0.1): {
+            case (_pain > 0.2): {
                 "STR_ACE_medical_treatment_Status_Pain";
             };
             default {
@@ -175,8 +158,12 @@ private _placed = _target getVariable [QGVAR(IVplaced), false];
 private _site = _target getVariable [QGVAR(IVsite), 0];
 
 if ((_placed == true) && (_site == _selectionN)) then {
-    private _a = "IV_16";
-    if !(_a isEqualTo "") then {
+    if (_site > 1) then {
+        private _a = "IV_16";
+        private _text = format ["STR_ACEP_circulation_%1_Display", _a];
+        _woundEntries pushback [localize _text, [0.3, 0.3, 0.5, 1]];
+    } else {
+        private _a = "IO_45";
         private _text = format ["STR_ACEP_circulation_%1_Display", _a];
         _woundEntries pushback [localize _text, [0.3, 0.3, 0.5, 1]];
     };

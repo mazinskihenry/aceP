@@ -19,3 +19,5 @@
 #define VAR_IN_PAIN           "ACE_medical_inPain"
 #define VAR_TOURNIQUET        "ACE_medical_tourniquets"
 #define VAR_FRACTURES         "ACE_medical_fractures"
+#define STRING_BODY_PARTS ["head", "body", "left arm", "right arm", "left leg", "right leg"]
+

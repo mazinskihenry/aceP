@@ -17,26 +17,19 @@
  * Public: No
  */
 
-diag_log "ENTERED RETURN";
-
-params ["_player", "_patient"];
+params ["_player", "_patient", "_AEDreturn"];
 private _output = localize LSTRING(X_Action_Remove);
-private _AEDvehicle = _patient getVariable [QGVAR(AEDvehicle), false];
-
-diag_log _AEDvehicle;
 
 _patient setVariable [QGVAR(X), false, true];
-_player setVariable [QGVAR(use), false, true];
-_player setVariable [QGVAR(returnedAED), true, true];
-[_output, 1.5, _player] call ace_common_fnc_displayTextStructured;
 
-if (_AEDvehicle == false) then {
+if (_AEDreturn == true) then {
+    _player setVariable [QGVAR(use), false, true];
+    [_output, 1.5, _player] call ace_common_fnc_displayTextStructured;
     [_player, "kat_X_AED"] call ace_common_fnc_addToInventory;
-    diag_log "NO RESET";
+    _player setVariable [QGVAR(returnedAED), true, true];
 } else {
-    _patient setVariable [QGVAR(AEDvehicle), false, true];
-    diag_log "RESET VALUE";
-
+    _patient setVariable [QGVAR(AEDvehicle), "", true];
+    _patient setVariable [QGVAR(vehicleTrue), false, true];
 };
 
 true;

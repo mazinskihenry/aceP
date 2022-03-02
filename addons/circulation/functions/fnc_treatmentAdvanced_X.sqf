@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: Katalam
+ * Author: Katalam, 2LT.Mazinski
  * Handle the X Series Defi for the patient.
  *
  * Arguments:
@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player, cursorTarget] call kat_circulation_fnc_treatmentAdvanced_X;
+ * [player, cursorTarget] call aceP_circulation_fnc_treatmentAdvanced_X;
  *
  * Public: No
  */
@@ -78,11 +78,9 @@ private _string = "HR: %1 RR: %2/%3";
     ((_target distance2D _player) > GVAR(distanceLimit_AEDX)) || _player getVariable [QGVAR(returnedAED), true]
 }, {
     params ["_player", "_target"];
-	diag_log "Distance Limit achieved on AED-X";
     [_player, _target] call FUNC(returnAED_X);
 }, [_player, _target], GVAR(timeLimit_AEDX), {
     params ["_player", "_target"];
-	diag_log "Time Limit achieved on AED-X";
     [_player, _target] call FUNC(returnAED_X);
 }] call CBA_fnc_waitUntilAndExecute;
 
