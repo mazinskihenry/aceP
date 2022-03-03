@@ -22,7 +22,7 @@
 
 params ["_medic", "_patient", "_bodyPart"];
 
-if !(IS_UNCONSCIOUS(_patient) exitWith {
+if !(IS_UNCONSCIOUS(_patient)) exitWith {
     private _output = localize LSTRING(fracture_fail);
     [_output, 1.5, _medic] call ace_common_fnc_displayTextStructured;
 };
