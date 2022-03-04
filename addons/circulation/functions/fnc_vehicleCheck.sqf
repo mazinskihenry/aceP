@@ -31,12 +31,12 @@ private _inventory = [];
 
     if (_x isKindOf "LandVehicle" || _x isKindOf "Helicopter") then {
         {
-            if (_x == "kat_X_AED") then {
+            if (_x isEqualTo "kat_X_AED") exitWith {
                 _return = true;
             };
         } forEach _inventory;
 
-        if (_return == true) then {
+        if (_return == true) exitWith {
             _patient setVariable [QGVAR(AEDvehicle), _x, true];
             _patient setVariable [QGVAR(vehicleTrue), true, true];
         };

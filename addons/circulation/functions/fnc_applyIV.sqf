@@ -24,7 +24,7 @@ params ["_medic", "_patient", "_bodyPart", "", "", "_usedItem"];
 
 _patient setVariable [QGVAR(IVplaced), true, true];
 
-if (_usedItem == "kat_IV_16") then {
+if (_usedItem isEqualTo "kat_IV_16") then {
     switch (_bodyPart) do {
     	case "leftarm": {_patient setVariable [QGVAR(IVsite), 2, true];
     	};

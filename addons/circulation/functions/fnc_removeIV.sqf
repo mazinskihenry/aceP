@@ -22,10 +22,7 @@ params ["_medic", "_patient", "_bodyPart"];
 
 private _partIndex = ALL_BODY_PARTS find toLower _bodyPart;
 private _IV = _patient getVariable [QGVAR(IVsite), 0];
-private _return = false;
 
-if ((_IV == _partIndex) && (_patient getVariable [QGVAR(IVplaced), false])) then {
-    _return = true;
-};
+if ((_IV == _partIndex) && (_patient getVariable [QGVAR(IVplaced), false])) exitWith {true};
 
-_return
+false

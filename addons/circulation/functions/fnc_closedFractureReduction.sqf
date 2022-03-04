@@ -28,7 +28,7 @@ private _fractureArray = _patient getVariable [QGVAR(fractures), [0,0,0,0,0,0]];
 private _count1 = [_patient, "Lidocaine"] call ace_medical_status_fnc_getMedicationCount;
 private _count2 = [_patient, "Morphine"] call ace_medical_status_fnc_getMedicationCount;
 
-if (_count1 == 0 && _count2 == 0) then {
+if (_count1 == 0 && _count2 == 0) exitWith {
     private _pain = random [0.7, 0.8, 0.9];
     [_patient, _pain] remoteExec ["ace_medical_fnc_adjustPainLevel", _patient];
 };
@@ -40,3 +40,5 @@ _fractureArray set [_part, 0];
 
 _patient setVariable [QGVAR(fractures), _fractureArray, true];
 _patient setVariable [VAR_FRACTURES, _activeFracture, true];
+
+[_patient] call ace_medical_engine_fnc_updateDamageEffects;

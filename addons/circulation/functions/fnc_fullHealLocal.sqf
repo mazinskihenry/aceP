@@ -45,6 +45,7 @@ _patient setVariable ["ace_medical_bandagedWounds", [], true];
 _patient setVariable ["ace_medical_stitchedWounds", [], true];
 _patient setVariable ["ace_medical_isLimping", false, true];
 _patient setVariable ["ace_medical_fractures", [0,0,0,0,0,0], true];
+_patient setVariable [QGVAR(fractures), [0,0,0,0,0,0], true];
 
 // Update wound bleeding
 [_patient] call ace_medical_status_fnc_updateWoundBloodLoss;
@@ -53,6 +54,20 @@ _patient setVariable ["ace_medical_fractures", [0,0,0,0,0,0], true];
 _patient setVariable ["ace_medical_heartRate", 80, true];
 _patient setVariable ["ace_medical_bloodPressure", [80, 120], true];
 _patient setVariable ["ace_medical_peripheralResistance", 100, true];
+_patient setVariable [QGVAR(alphaAction), 1, true];
+
+// IV
+_patient setVariable [QGVAR(IVplaced), false, true];
+_patient setVariable [QGVAR(IVsite), 0, true];
+
+// AED
+_patient setVariable [QGVAR(AEDvehicle), false, true];
+_patient setVariable [QGVAR(X), false, true];
+_patient setVariable [QGVAR(use), false, true];
+_patient setVariable [QGVAR(returnedAED), false, true];
+_patient setVariable [QGVAR(CPRcount), 2, true];
+_patient setVariable [QGVAR(AEDvehicle), "", true];
+_patient setVariable [QGVAR(vehicleTrue), false, true];
 
 // Damage storage
 _patient setVariable ["ace_medical_bodyPartDamage", [0,0,0,0,0,0], true];
@@ -76,6 +91,9 @@ _patient setVariable ["ace_medical_painSuppress", 0, true];
 
 // Medication
 _patient setVariable ["ace_medical_medications", [], true];
+_patient setVariable [QGVAR(lidocaine), false, true];
+_patient setVariable [QGVAR(etomidate), false, true];
+_patient setVariable [QGVAR(sedated), false, true];
 
 // Reset triage card since medication is reset
 _patient setVariable ["ace_medical_triageCard", [], true];

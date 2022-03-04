@@ -35,6 +35,8 @@ if ((_liveFracture == 2.5) || (_liveFracture == 3.5)) exitWith {
 
     _patient setVariable [QGVAR(fractures), _fractureArray, true];
     _patient setVariable [VAR_FRACTURES, _activeFracture, true];
+    
+    [_patient] call ace_medical_engine_fnc_updateDamageEffects;
 };
 
 private _output = localize LSTRING(fracture_fail);

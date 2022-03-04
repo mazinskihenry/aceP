@@ -19,12 +19,12 @@
 
 params ["_target", "_medic", "_item"];
 
-if (_item == "Lorazepam") then {
+if (_item isEqualTo "Lorazepam") then {
     _target setVariable [QGVAR(sedated), true, true];
     [_target, true] call ace_medical_fnc_setUnconscious;
 };
 
-if (_item == "Flumazenil") then {
+if (_item isEqualTo "Flumazenil") then {
     _target setVariable [QGVAR(sedated), false, true];
 };
 
