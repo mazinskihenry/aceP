@@ -27,9 +27,11 @@ _unit setVariable [QGVAR(AEDvehicle), false, true];
 
 _unit setVariable [QGVAR(alphaAction), 1, true];
 
+_unit setVariable [QGVAR(debridement), [0,0,0,0,0,0], true];
 _unit setVariable [QGVAR(fractures), [0,0,0,0,0,0], true];
 _unit setVariable [QGVAR(lidocaine), false, true];
 _unit setVariable [QGVAR(etomidate), false, true];
+_unit setVariable [QGVAR(TXA), 1, true];
 _unit setVariable [QGVAR(sedated), false, true];
 
 /*
@@ -45,7 +47,7 @@ _unit setVariable [QGVAR(sedated), false, true];
 
 _unit setVariable [QGVAR(X), false, true];
 _unit setVariable [QGVAR(use), false, true];
-_unit setVariable [QGVAR(returnedAED), false, true];
+_unit setVariable [QGVAR(returnedAED), true, true];
 _unit setVariable [QGVAR(CPRcount), 2, true];
 
 _unit setVariable[QGVAR(AEDvehicle), "", true];
@@ -69,5 +71,4 @@ _unit setVariable[QGVAR(vehicleTrue), false, true];
     if !(_action) then {
         _unit setVariable [QGVAR(alphaAction), 1];
     };
-
 }, 180, [_unit]] call CBA_fnc_addPerFrameHandler;

@@ -6,6 +6,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         units[] = {
             "kat_PainkillerItem",
+            "kat_CarbonateItem",
             "kat_X_AEDItem"
         };
         weapons[] = {
@@ -17,6 +18,7 @@ class CfgPatches {
             "kat_CarbonateItem",
             "kat_naloxone",
             "kat_TXA",
+            "kat_EACA",
             "kat_X_AED",
             "kat_norepinephrine",
             "kat_phenylephrine",
@@ -27,7 +29,8 @@ class CfgPatches {
             "kat_flumazenil"
             "kat_scalpel",
             "kat_retractor",
-            "kat_clamp"
+            "kat_clamp",
+            "kat_vacuum"
         };
         magazines[] = { };
         requiredAddons[] = {

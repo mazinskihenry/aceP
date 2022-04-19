@@ -30,6 +30,7 @@ if (_liveFracture > 3) then {
     _liveFracture = _liveFracture - 1;
 };
 
-if ((_liveFracture >= 2.1) && (_liveFracture <= 2.7)) exitWith {true};
+if ((_number == 5) && (_liveFracture == 2 || _liveFracture == 3)) exitWith {true};
+if ((_number != 5) && (_liveFracture >= 2.1) && (_liveFracture <= 2.7)) exitWith {true};
 
 false

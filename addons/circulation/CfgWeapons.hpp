@@ -49,7 +49,7 @@ class CfgWeapons {
         descriptionShort = CSTRING(IV_DescShort);
         descriptionUse = CSTRING(IV_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.1;
         }; 
     };
     class kat_IO_FAST: ACE_ItemCore {
@@ -60,7 +60,7 @@ class CfgWeapons {
         descriptionShort = CSTRING(IO_DescShort);
         descriptionUse = CSTRING(IV_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.1;
         }; 
     };
     class kat_naloxone: ACE_ItemCore {
@@ -71,7 +71,7 @@ class CfgWeapons {
         descriptionShort = CSTRING(Naloxone_DescShort);
         descriptionUse = CSTRING(Naloxone_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_TXA: ACE_ItemCore {
@@ -82,8 +82,19 @@ class CfgWeapons {
         descriptionShort = CSTRING(TXA_DescShort);
         descriptionUse = CSTRING(TXA_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
+    };
+    class kat_EACA: ACE_ItemCore {
+        scope = 2;
+        displayName = "EACA";
+        picture = QPATHTOF(ui\icon_TXA.paa);
+        model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
+        descriptionShort = CSTRING(EACA_DescShort);
+        descriptionUse = CSTRING(EACA_DescUse);
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 0.2;
+        };
     };
     class kat_norepinephrine: ACE_ItemCore {
         scope = 2;
@@ -93,7 +104,7 @@ class CfgWeapons {
         descriptionShort = CSTRING(Norep_DescShort);
         descriptionUse = CSTRING(Norep_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_phenylephrine: ACE_ItemCore {
@@ -104,7 +115,7 @@ class CfgWeapons {
         descriptionShort = CSTRING(Phenyl_DescShort);
         descriptionUse = CSTRING(Phenyl_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_nitroglycerin: ACE_ItemCore {
@@ -115,7 +126,7 @@ class CfgWeapons {
         descriptionShort = CSTRING(Nitro_DescShort);
         descriptionUse = CSTRING(Nitro_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_lidocaine: ACE_ItemCore {
@@ -123,10 +134,10 @@ class CfgWeapons {
         displayName = "Lidocaine";
         picture = QPATHTOF(ui\lidocaine.paa);
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
-        descriptionShort = CSTRING(Nitro_DescShort);
-        descriptionUse = CSTRING(Nitro_DescUse);
+        descriptionShort = CSTRING(Lidocaine_DescShort);
+        descriptionUse = CSTRING(Lidocaine_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_etomidate: ACE_ItemCore {
@@ -134,10 +145,10 @@ class CfgWeapons {
         displayName = "Etomidate";
         picture = QPATHTOF(ui\etomidate.paa);
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
-        descriptionShort = CSTRING(Nitro_DescShort);
-        descriptionUse = CSTRING(Nitro_DescUse);
+        descriptionShort = CSTRING(Etomidate_DescShort);
+        descriptionUse = CSTRING(Etomidate_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_lorazepam: ACE_ItemCore {
@@ -145,10 +156,10 @@ class CfgWeapons {
         displayName = "Lorazepam";
         picture = QPATHTOF(ui\lorazepam.paa);
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
-        descriptionShort = CSTRING(Nitro_DescShort);
-        descriptionUse = CSTRING(Nitro_DescUse);
+        descriptionShort = CSTRING(Lorazepam_DescShort);
+        descriptionUse = CSTRING(Lorazepam_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_flumazenil: ACE_ItemCore {
@@ -156,10 +167,10 @@ class CfgWeapons {
         displayName = "Flumazenil";
         picture = QPATHTOF(ui\flumazenil.paa);
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
-        descriptionShort = CSTRING(Nitro_DescShort);
-        descriptionUse = CSTRING(Nitro_DescUse);
+        descriptionShort = CSTRING(Flumazenil_DescShort);
+        descriptionUse = CSTRING(Flumazenil_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_scalpel: ACE_ItemCore {
@@ -167,10 +178,10 @@ class CfgWeapons {
         displayName = "Scalpel";
         picture = QPATHTOF(ui\scalpel.paa);
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
-        descriptionShort = CSTRING(Nitro_DescShort);
-        descriptionUse = CSTRING(Nitro_DescUse);
+        descriptionShort = CSTRING(Scalpel_DescShort);
+        descriptionUse = CSTRING(Scalpel_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.2;
         }; 
     };
     class kat_retractor: ACE_ItemCore {
@@ -178,8 +189,8 @@ class CfgWeapons {
         displayName = "Retractor";
         picture = QPATHTOF(ui\retractor.paa);
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
-        descriptionShort = CSTRING(Nitro_DescShort);
-        descriptionUse = CSTRING(Nitro_DescUse);
+        descriptionShort = CSTRING(Retractor_DescShort);
+        descriptionUse = CSTRING(Retractor_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.5;
         }; 
@@ -189,8 +200,8 @@ class CfgWeapons {
         displayName = "Clamp";
         picture = QPATHTOF(ui\clamp.paa);
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
-        descriptionShort = CSTRING(Nitro_DescShort);
-        descriptionUse = CSTRING(Nitro_DescUse);
+        descriptionShort = CSTRING(Clamp_DescShort);
+        descriptionUse = CSTRING(Clamp_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.5;
         }; 
@@ -200,10 +211,21 @@ class CfgWeapons {
         displayName = "Bone Plate";
         picture = QPATHTOF(ui\plate.paa);
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
-        descriptionShort = CSTRING(Nitro_DescShort);
-        descriptionUse = CSTRING(Nitro_DescUse);
+        descriptionShort = CSTRING(Plate_DescShort);
+        descriptionUse = CSTRING(Plate_DescUse);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 0.5;
+            mass = 0.3;
         }; 
+    };
+    class kat_vacuum: ACE_ItemCore {
+        scope = 2;
+        displayName = "Dressing Vacuum";
+        picture = QPATHTOF(ui\vacuum.paa);
+        model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
+        descriptionShort = CSTRING(Vacuum_DescShort);
+        descriptionUse = CSTRING(Vacuum_DescUse);
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 5;
+        };
     };
 };

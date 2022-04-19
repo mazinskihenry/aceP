@@ -22,6 +22,9 @@ private _output = localize LSTRING(X_Action_Remove);
 
 _patient setVariable [QGVAR(X), false, true];
 
+[_patient, true] call ace_dragging_fnc_setCarryable;
+[_patient, true] call ace_dragging_fnc_setDraggable;
+
 if (_AEDreturn == true) then {
     _player setVariable [QGVAR(use), false, true];
     [_output, 1.5, _player] call ace_common_fnc_displayTextStructured;

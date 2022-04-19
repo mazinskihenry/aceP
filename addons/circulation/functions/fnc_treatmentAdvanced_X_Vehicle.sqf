@@ -32,6 +32,11 @@ if (_target getVariable [QGVAR(X), false]) exitWith {
 // connect the x-series
 _target setVariable [QGVAR(X), true, true];
 
+[_target, false] call ace_dragging_fnc_setCarryable;
+[_target, false] call ace_dragging_fnc_setDraggable;
+
+_target setVariable [QGVAR(vehicleTrue), true, true];
+
 // analyse sound feedback
 playsound3D [QPATHTOF_SOUND(sounds\analyse.wav), _target, false, getPosASL _target, 5, 1, 15];
 

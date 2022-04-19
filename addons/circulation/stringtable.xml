@@ -144,7 +144,6 @@
             <French>Un analgésique utilisé pour diminuer la douleur.</French>
             <Turkish>Hafif ila orta dereceli ağrı deneyimleriyle mücadele etmek için kullanılan bir ağrı kesici.</Turkish>
             <Italian>Analgesico usato per combattere il dolore moderato e leggero</Italian>
-
         </Key>
         <Key ID="STR_ACEP_circulation_Painkillers_Box_Display">
             <English>Painkillers</English>
@@ -314,6 +313,18 @@
             <Turkish>Ağrı Kesicileri Al</Turkish>
             <Italian>Somministra TXA</Italian>
         </Key>
+        <Key ID="STR_ACEP_circulation_Take_EACA">
+            <English>Push EACA</English>
+            <German>Schlucke Schmerzmittel</German>
+            <Polish>Wstrzyknij TXA</Polish>
+            <Spanish>Administrar TXA</Spanish>
+            <Chinese>服用止痛藥</Chinese>
+            <Czech>Vzít si Prášky proti bolesti</Czech>
+            <Korean>진통제 복용</Korean>
+            <French>Administre du TXA</French>
+            <Turkish>Ağrı Kesicileri Al</Turkish>
+            <Italian>Somministra TXA</Italian>
+        </Key>
         <Key ID="STR_ACEP_circulation_Norep_DescShort">
             <English>Used to raise blood pressure</English>
             <German>Schmerzbekämpfer</German>
@@ -435,7 +446,6 @@
             <French>Un analgésique utilisé pour diminuer la douleur.</French>
             <Turkish>Hafif ila orta dereceli ağrı deneyimleriyle mücadele etmek için kullanılan bir ağrı kesici.</Turkish>
             <Italian>Analgesico usato per combattere il dolore moderato e leggero</Italian>
-
         </Key>
         <Key ID="STR_ACEP_circulation_Nitro_Box_Display">
             <English>Nitroglycerin</English>
@@ -941,7 +951,7 @@
             <Turkish>Oyuncuyu canlandırmak için kullanın</Turkish>
             <Italian>Utilizzato per resuscitare un giocatore</Italian>
         </Key>
-        <Key ID="STR_ACEP_Medical_Treatment_Activity_AED">
+        <Key ID="STR_ACEP_circulation_Activity_AED">
             <English>%1 performed AED</English>
             <Polish>%1 wykonał cykl AED</Polish>
             <German>%1 hat ein AED durchgeführt</German>
@@ -953,7 +963,7 @@
             <Turkish>%1 AED gerçekleştirdi</Turkish>
             <Italian>ha utilizzato un DEA</Italian>
         </Key>
-        <Key ID="STR_ACEP_Medical_Treatment_Activity_AEDS">
+        <Key ID="STR_ACEP_circulation_Activity_AEDS">
             <English>%1 performed AED Station</English>
             <Polish>%1 wykonał cykl AED Station</Polish>
             <German>%1 hat ein AED Station durchgeführt</German>
@@ -965,7 +975,7 @@
             <Turkish>%1 gerçekleştirilen AED İstasyonu</Turkish>
             <Italian>ha utilizzato una stazione DEA</Italian>
         </Key>
-        <Key ID="STR_ACEP_Medical_Treatment_Activity_AEDX">
+        <Key ID="STR_ACEP_circulation_Activity_AEDX">
             <English>%1 performed AED-X</English>
             <Polish>%1 wykonał cykl AED-X</Polish>
             <German>%1 hat ein AED-X durchgeführt</German>
@@ -1190,8 +1200,74 @@
         <Key ID="STR_ACEP_circulation_incision_log">
             <English>%1 made an incision on the %2</English>
         </Key>
+        <Key ID="STR_ACEP_circulation_dialysis_log">
+            <English>%1 performed dialysis</English>
+        </Key>
         <Key ID="STR_ACEP_circulation_fracture_fail">
             <English>Surgical Action Failed</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_debridement_fail">
+            <English>Wound Dressing Failed</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Lidocaine_DescShort">
+            <English>Regional Anesthetic</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Lidocaine_DescUse">
+            <English>Used as a regional anesthetic for localized proceedures</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Etomidate_DescShort">
+            <English>General Anesthetic</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Etomidate_DescUse">
+            <English>Used as a general anesthetic for surgical proceedures</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Lorazepam_DescShort">
+            <English>Sedtation medication</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Lorazepam_DescUse">
+            <English>Used to sedate patients and prepare them for surgery</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Flumazenil_DescShort">
+            <English>Counter to Lorzaepam</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Flumazenile_DescUse">
+            <English>Used to bring patients out of sedation</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Scalpel_DescShort">
+            <English>Create incisions and debrides wounds</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Scalpel_DescUse">
+            <English>Used for creating incisions and debriding wounds</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Retractor_DescShort">
+            <English>Wound Expander</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Retractor_DescUse">
+            <English>Used to expand and expose fractures</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Clamp_DescShort">
+            <English>Fracture Clamp</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Clamp_DescUse">
+            <English>Used to clamp comminuted fractures</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Plate_DescShort">
+            <English>Bone Plate</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Plate_DescUse">
+            <English>Used to complete all complex fracture types</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_EACA_DescShort">
+            <English>Clot stabilizer</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_EACA_DescUse">
+            <English>Used to stabilize and close clots</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Vacuum_DescShort">
+            <English>Dressing vacuum</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Vacuum_DescUse">
+            <English>Used to completely dress and seal wounds</English>
         </Key>
     </Package>
 </Project>

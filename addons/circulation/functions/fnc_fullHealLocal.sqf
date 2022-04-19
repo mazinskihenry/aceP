@@ -35,8 +35,6 @@ if (_patient getVariable ["ace_medical_inCardiacArrest", false]) then {
 
 _patient setVariable ["ace_medical_pain", 0, true];
 _patient setVariable ["ace_medical_bloodVolume", 6.0, true];
-
-// Tourniquets
 _patient setVariable ["ace_medical_treatment_occludedMedications", nil, true];
 
 // Wounds and Injuries
@@ -46,6 +44,7 @@ _patient setVariable ["ace_medical_stitchedWounds", [], true];
 _patient setVariable ["ace_medical_isLimping", false, true];
 _patient setVariable ["ace_medical_fractures", [0,0,0,0,0,0], true];
 _patient setVariable [QGVAR(fractures), [0,0,0,0,0,0], true];
+_patient setVariable [QGVAR(debridement), [0,0,0,0,0,0], true];
 
 // Update wound bleeding
 [_patient] call ace_medical_status_fnc_updateWoundBloodLoss;
@@ -64,7 +63,7 @@ _patient setVariable [QGVAR(IVsite), 0, true];
 _patient setVariable [QGVAR(AEDvehicle), false, true];
 _patient setVariable [QGVAR(X), false, true];
 _patient setVariable [QGVAR(use), false, true];
-_patient setVariable [QGVAR(returnedAED), false, true];
+_patient setVariable [QGVAR(returnedAED), true, true];
 _patient setVariable [QGVAR(CPRcount), 2, true];
 _patient setVariable [QGVAR(AEDvehicle), "", true];
 _patient setVariable [QGVAR(vehicleTrue), false, true];
@@ -91,6 +90,7 @@ _patient setVariable ["ace_medical_painSuppress", 0, true];
 
 // Medication
 _patient setVariable ["ace_medical_medications", [], true];
+_patient setVariable [QGVAR(TXA), 1, true];
 _patient setVariable [QGVAR(lidocaine), false, true];
 _patient setVariable [QGVAR(etomidate), false, true];
 _patient setVariable [QGVAR(sedated), false, true];

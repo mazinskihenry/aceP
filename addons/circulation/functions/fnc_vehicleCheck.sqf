@@ -22,24 +22,13 @@
 
 params ["_medic", "_patient"];
 
+private _checkArray = _patient nearEntities 10;
 private _return = false;
-private _checkArray = _patient nearEntities 5;
-private _inventory = [];
 
 {
-    _inventory = itemCargo _x;
-
-    if (_x isKindOf "LandVehicle" || _x isKindOf "Helicopter") then {
-        {
-            if (_x isEqualTo "kat_X_AED") exitWith {
-                _return = true;
-            };
-        } forEach _inventory;
-
-        if (_return == true) exitWith {
-            _patient setVariable [QGVAR(AEDvehicle), _x, true];
-            _patient setVariable [QGVAR(vehicleTrue), true, true];
-        };
+    if (_x getVariable ["ace_medical_isMedicalVehicle", false]) exitWith {
+        _patient setVariable [QGVAR(AEDvehicle), _x, true];
+        _return = true;
     };
 } forEach _checkArray;
 
