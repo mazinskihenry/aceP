@@ -29,11 +29,12 @@ if (vehicle _patient isEqualTo _patient) then {
 	{ [_x, 0.2] remoteExec ["ace_medical_fnc_adjustPainLevel",_x]; nil; } count _bystanders;
 };
 
-if (GET_HEART_RATE(_patient) > 60) exitWith {
-    [_patient, "TACHYCARDIA", 5, 20, 150, 0, 0] call ace_medical_status_fnc_addMedicationAdjustment;
-};
-
 _patient setVariable ["ace_medical_CPR_provider", objNull, true];
+
+if (GET_HEART_RATE(_patient) > 60) exitWith {
+    _patient setVariable [VAR_HEART_RATE, 0, true];
+    _patient setVariable [VAR_BLOOD_PRESS, [0, 0], true];
+};
 
 if (alive _patient && {_patient getVariable ["ace_medical_inCardiacArrest", false]}) then {
     ["ace_medical_treatment_cprLocal", [_medic, _patient, _reviveObject], _patient] call CBA_fnc_targetEvent;

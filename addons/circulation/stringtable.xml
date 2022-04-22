@@ -27,99 +27,30 @@
         </Key>
         <Key ID="STR_ACEP_circulation_CARBONATE_ACTIVE">
             <English>Allow players to use Ammonium Carbonate?</English>
-            <German>Anderer Loadoutname</German>
-            <Polish>Inny  loadoutname</Polish>
-            <Spanish>Diferente nombre de equipamiento</Spanish>
-            <Chinese>不同配置名稱</Chinese>
-            <Czech>Jiný název vybavení</Czech>
-            <Korean>다른 구성이름</Korean>
-            <French>Nom d'équipement différent</French>
-            <Turkish>Farklı ekipman adı</Turkish>
-            <Italian>Loadoutname diverso</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_TXA_ACTIVE">
             <English>Allow players to use TXA?</English>
-            <German>Anderer Loadoutname</German>
-            <Polish>Inny  loadoutname</Polish>
-            <Spanish>Diferente nombre de equipamiento</Spanish>
-            <Chinese>不同配置名稱</Chinese>
-            <Czech>Jiný název vybavení</Czech>
-            <Korean>다른 구성이름</Korean>
-            <French>Nom d'équipement différent</French>
-            <Turkish>Farklı ekipman adı</Turkish>
-            <Italian>Loadoutname diverso</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_IV_MEDIC">
             <English>Changes what medical level is required to set IVs/IOs</English>
-            <German>Anderer Loadoutname</German>
-            <Polish>Inny  loadoutname</Polish>
-            <Spanish>Diferente nombre de equipamiento</Spanish>
-            <Chinese>不同配置名稱</Chinese>
-            <Czech>Jiný název vybavení</Czech>
-            <Korean>다른 구성이름</Korean>
-            <French>Nom d'équipement différent</French>
-            <Turkish>Farklı ekipman adı</Turkish>
-            <Italian>Loadoutname diverso</Italian>
-        </Key>]
+        </Key>
+        <Key ID="STR_ACEP_circulation_IV_DROP_ENABLE">
+            <English>Enables IV/IO drop times</English>
+        </Key>
         <Key ID="STR_ACEP_circulation_IV_DROP">
             <English>Changes the time at which IVs/IOs fall out of a patient</English>
-            <German>Anderer Loadoutname</German>
-            <Polish>Inny  loadoutname</Polish>
-            <Spanish>Diferente nombre de equipamiento</Spanish>
-            <Chinese>不同配置名稱</Chinese>
-            <Czech>Jiný název vybavení</Czech>
-            <Korean>다른 구성이름</Korean>
-            <French>Nom d'équipement différent</French>
-            <Turkish>Farklı ekipman adı</Turkish>
-            <Italian>Loadoutname diverso</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_IV_REUSE">
             <English>Sets if IV/IO needles are reusable</English>
-            <German>Anderer Loadoutname</German>
-            <Polish>Inny  loadoutname</Polish>
-            <Spanish>Diferente nombre de equipamiento</Spanish>
-            <Chinese>不同配置名稱</Chinese>
-            <Czech>Jiný název vybavení</Czech>
-            <Korean>다른 구성이름</Korean>
-            <French>Nom d'équipement différent</French>
-            <Turkish>Farklı ekipman adı</Turkish>
-            <Italian>Loadoutname diverso</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_PUSH_TIME">
             <English>Push time for all IV Medications</English>
-            <German>Anderer Loadoutname</German>
-            <Polish>Inny  loadoutname</Polish>
-            <Spanish>Diferente nombre de equipamiento</Spanish>
-            <Chinese>不同配置名稱</Chinese>
-            <Czech>Jiný název vybavení</Czech>
-            <Korean>다른 구성이름</Korean>
-            <French>Nom d'équipement différent</French>
-            <Turkish>Farklı ekipman adı</Turkish>
-            <Italian>Loadoutname diverso</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_IV_TIME">
             <English>Time to establish IVs</English>
-            <German>Anderer Loadoutname</German>
-            <Polish>Inny  loadoutname</Polish>
-            <Spanish>Diferente nombre de equipamiento</Spanish>
-            <Chinese>不同配置名稱</Chinese>
-            <Czech>Jiný název vybavení</Czech>
-            <Korean>다른 구성이름</Korean>
-            <French>Nom d'équipement différent</French>
-            <Turkish>Farklı ekipman adı</Turkish>
-            <Italian>Loadoutname diverso</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_IO_TIME">
             <English>Time to establish IOs</English>
-            <German>Anderer Loadoutname</German>
-            <Polish>Inny  loadoutname</Polish>
-            <Spanish>Diferente nombre de equipamiento</Spanish>
-            <Chinese>不同配置名稱</Chinese>
-            <Czech>Jiný název vybavení</Czech>
-            <Korean>다른 구성이름</Korean>
-            <French>Nom d'équipement différent</French>
-            <Turkish>Farklı ekipman adı</Turkish>
-            <Italian>Loadoutname diverso</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_Painkillers_DescShort">
             <English>Used to suppress pain</English>
@@ -1268,6 +1199,45 @@
         </Key>
         <Key ID="STR_ACEP_circulation_Vacuum_DescUse">
             <English>Used to completely dress and seal wounds</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_ADVANCED_FRACTURE">
+            <English>Enables advanced fractures</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_SIMPLE_FRACTURE">
+            <English>Simple fracture chance</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_COMPOUND_FRACTURE">
+            <English>Compound fracture chance</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_ETOMIDATE_TIME">
+            <English>Etomidate cycle timer</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_CLOSED_TIMER">
+            <English>Closed reduction timer</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_OPEN_TIMER">
+            <English>Open reduction timer</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_SURGICAL_TIMER">
+            <English>Open reduction timer</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_INCISION_TIMER">
+            <English>Incision timer</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_FRACTURE_CHECK">
+            <English>Fracture check level</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_CLOSED_REDUCTION">
+            <English>Closed reduction level</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_SURGICAL_ACTION">
+            <English>Surgical action level</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_CLOSED_LOCATION">
+            <English>Closed reduction location</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_SURGICAL_LOCATION">
+            <English>Closed reduction location</English>
         </Key>
     </Package>
 </Project>

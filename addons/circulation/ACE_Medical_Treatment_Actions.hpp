@@ -33,7 +33,7 @@ class ACE_Medical_Treatment_Actions {
         category = "medication";
         treatmentLocations = 0;
         allowedSelections[] = {"Head"};
-        allowSelfTreatment = 0;
+        allowSelfTreatment = 1;
         medicRequired = 1;
         treatmentTime = 5;
         items[] = {};
@@ -44,7 +44,7 @@ class ACE_Medical_Treatment_Actions {
     class Naloxone: Carbonate {
         displayName = CSTRING(Take_Naloxone);
         allowedSelections[] = {"Head"};
-        allowSelfTreatment = 0;
+        allowSelfTreatment = 1;
         medicRequired = 1;
         treatmentTime = 5;
         items[] = {"kat_naloxone"};
@@ -55,7 +55,7 @@ class ACE_Medical_Treatment_Actions {
     class TXA: Carbonate {
         displayName = CSTRING(Take_TXA);
         allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
-        allowSelfTreatment = 0;
+        allowSelfTreatment = 1;
         medicRequired = 1;
         treatmentTime = QGVAR(PushTime);
         items[] = {"kat_TXA"};
@@ -66,7 +66,7 @@ class ACE_Medical_Treatment_Actions {
     class EACA: Carbonate {
         displayName = CSTRING(Take_EACA);
         allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
-        allowSelfTreatment = 0;
+        allowSelfTreatment = 1;
         medicRequired = 1;
         treatmentTime = QGVAR(PushTime);
         items[] = {"kat_EACA"};
@@ -77,7 +77,7 @@ class ACE_Medical_Treatment_Actions {
     class Norepinephrine: Carbonate {
         displayName = CSTRING(Take_Norep);
         allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
-        allowSelfTreatment = 0;
+        allowSelfTreatment = 1;
         medicRequired = 1;
         treatmentTime = QGVAR(PushTime);
         items[] = {"kat_norepinephrine"};
@@ -88,7 +88,7 @@ class ACE_Medical_Treatment_Actions {
     class Phenylephrine: Carbonate {
         displayName = CSTRING(Take_Phenyl);
         allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
-        allowSelfTreatment = 0;
+        allowSelfTreatment = 1;
         medicRequired = 1;
         treatmentTime = QGVAR(PushTime);
         items[] = {"kat_phenylephrine"};
@@ -99,7 +99,7 @@ class ACE_Medical_Treatment_Actions {
     class Nitroglycerin: Carbonate {
         displayName = CSTRING(Take_Nitro);
         allowedSelections[] = {"Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
-        allowSelfTreatment = 0;
+        allowSelfTreatment = 1;
         medicRequired = 1;
         treatmentTime = QGVAR(PushTime);
         items[] = {"kat_nitroglycerin"};
@@ -262,7 +262,7 @@ class ACE_Medical_Treatment_Actions {
         displayNameProgress = "Performing";
         items[] = {};
         condition = QFUNC(vehicleCheckDialysis);
-        treatmentTime = 10;
+        treatmentTime = 15;
         medicRequired = 1;
         callbackProgress = "";
         callbackStart = "";
@@ -430,7 +430,7 @@ class ACE_Medical_Treatment_Actions {
         allowedSelections[] = {"Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         allowSelfTreatment = 0;
         medicRequired = QGVAR(surgicalAction);
-        treatmentTime = 10;
+        treatmentTime = 15;
         items[] = {"kat_scalpel"};
         condition = QUOTE([ARR_3(_medic, _patient, _bodyPart)] call FUNC(debridementCheck));
         consumeItem = 0;
@@ -445,7 +445,7 @@ class ACE_Medical_Treatment_Actions {
         allowedSelections[] = {"Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         allowSelfTreatment = 8;
         medicRequired = QGVAR(surgicalAction);
-        treatmentTime = 10;
+        treatmentTime = 8;
         items[] = {"kat_vacuum"};
         condition = QUOTE([ARR_3(_medic, _patient, _bodyPart)] call FUNC(debridementCheck));
         consumeItem = 0;

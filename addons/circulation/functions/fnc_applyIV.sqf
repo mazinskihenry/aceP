@@ -24,6 +24,12 @@ params ["_medic", "_patient", "_bodyPart", "", "", "_usedItem"];
 
 _patient setVariable [QGVAR(IVplaced), true, true];
 
+private _active = _patient getVariable [QGVAR(active), false];
+
+if (_active) then {
+    _patient setVariable [QGVAR(active), false, true];
+};
+
 if (_usedItem isEqualTo "kat_IV_16") then {
     switch (_bodyPart) do {
     	case "leftarm": {_patient setVariable [QGVAR(IVsite), 2, true];
@@ -41,39 +47,47 @@ if (_usedItem isEqualTo "kat_IV_16") then {
 } else {
     _patient setVariable [QGVAR(IVsite), 1, true];
 
-    [_patient, 0.7] call ace_medical_status_fnc_adjustPainLevel;
+    [_patient, 0.8] call ace_medical_status_fnc_adjustPainLevel;
 
     [_patient, "activity", LSTRING(iv_log), [[_medic] call ace_common_fnc_getName, "FAST IO"]] call ace_medical_treatment_fnc_addToLog;
     [_patient, "FAST IO"] call ace_medical_treatment_fnc_addToTriageCard;
 };
 
-[{
-    params ["_args", "_idPFH"];
-    _args params ["_patient"];
-
+if (GVAR(IVdropEnable)) then {
     [{
         params ["_args", "_idPFH"];
         _args params ["_patient"];
 
-        private _bloodBags = _patient getVariable ["ace_medical_ivBags", []];
+        _patient setVariable [QGVAR(active), true, true];
 
-        if !(_patient getVariable [QGVAR(IVplaced), false]) then {
-            [_idPFH] call CBA_fnc_removePerFrameHandler;
-        };
+        [{
+            params ["_args", "_idPFH"];
+            _args params ["_patient"];
 
-        if (_bloodBags isEqualTo []) then {
-            [_idPFH] call CBA_fnc_removePerFrameHandler;
-            private _site = _patient getVariable [QGVAR(IVsite), 0];
+            private _bloodBags = _patient getVariable ["ace_medical_ivBags", []];
 
-            if (_site == 1) then {
-                _patient addItem "kat_IO_FAST";
-            } else {
-                _patient addItem "kat_IV_16";
+            if !(_patient getVariable [QGVAR(IVplaced), false]) exitWith {
+                [_idPFH] call CBA_fnc_removePerFrameHandler;
             };
 
-            _patient setVariable [QGVAR(IVplaced), false, true];
-            _patient setVariable [QGVAR(IVsite), 0, true];
-        };
-    }, GVAR(IVdrop), [_patient]] call CBA_fnc_addPerFrameHandler;
+            if !(_patient getVariable [QGVAR(active), false]) exitWith {
+                [_idPFH] call CBA_fnc_removePerFrameHandler;
+            };
 
-}, [_patient], GVAR(IVdrop)] call CBA_fnc_waitAndExecute;
+            if (_bloodBags isEqualTo []) exitWith {
+                [_idPFH] call CBA_fnc_removePerFrameHandler;
+                private _site = _patient getVariable [QGVAR(IVsite), 0];
+
+                if (_site == 1) then {
+                    _patient addItem "kat_IO_FAST";
+                } else {
+                    _patient addItem "kat_IV_16";
+                };
+
+                _patient setVariable [QGVAR(IVplaced), false, true];
+                _patient setVariable [QGVAR(IVsite), 0, true];
+            };
+        }, GVAR(IVdrop), [_patient]] call CBA_fnc_addPerFrameHandler;
+
+    }, [_patient], GVAR(IVdrop)] call CBA_fnc_waitAndExecute;
+};

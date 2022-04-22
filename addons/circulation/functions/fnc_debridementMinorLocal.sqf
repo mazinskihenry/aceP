@@ -36,8 +36,11 @@ private _damage = _patient getVariable ["ace_medical_bodyPartDamage", [0,0,0,0,0
 
 private _bandagedWounds = GET_BANDAGED_WOUNDS(_patient);
 private _stitchedWounds = GET_STITCHED_WOUNDS(_patient);
+private _openWounds = GET_OPEN_WOUNDS(_patient);
 private _bandaged = [];
 private _stitched = [];
+
+private _remainder = false;
 
 if (_count1 == 0 && _count2 == 0) then {
     private _pain = random [0.7, 0.8, 0.9];
@@ -67,5 +70,30 @@ _patient setVariable [VAR_STITCHED_WOUNDS, _stitched, true];
 
 _debridement set [_part, 0];
 _patient setVariable [QGVAR(debridement), _debridement, true];
+
+{
+    _x params ["_id", "_bodyPart", "_amount"];
+
+    if (_bodyPart == _part) exitWith {
+        _remainder = true;
+    };
+
+} forEach _openWounds;
+
+if !(_remainder) then {
+    _damage set [_part, 0];
+    _patient setVariable ["ace_medical_bodyPartDamage", _damage, true];
+
+    {
+        _x params ["_id", "_bodyPart", "_amount"];
+
+        if (_bodyPart != _part) then {
+            _open pushBack _x;
+        };
+
+    } forEach _openWounds;
+
+    _patient setVariable [VAR_OPEN_WOUNDS, _open, true];
+};
 
 [_patient] call ace_medical_engine_fnc_updateDamageEffects;

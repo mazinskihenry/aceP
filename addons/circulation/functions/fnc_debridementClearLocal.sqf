@@ -32,7 +32,7 @@ _patient setVariable [QGVAR(debridement), _debridement, true];
     _x params ["_id", "_bodyPart", "_amount"];
 
     if (_bodyPart == _compare) then {
-        ["ace_medical_treatment_bandageLocal", [_patient, _bodyPart2, "QuikClot"], _patient] call CBA_fnc_targetEvent;
+        ["ace_medical_treatment_bandageLocal", [_patient, _bodyPart2, "Dressing"], _patient] call CBA_fnc_targetEvent;
     };
 
 } forEach GET_OPEN_WOUNDS(_patient);
@@ -41,7 +41,7 @@ _patient setVariable [QGVAR(debridement), _debridement, true];
     _x params ["_id", "_bodyPart", "_amount"];
 
     if (_bodyPart == _compare) then {
-        ["ace_medical_treatment_bandageLocal", [_patient, _bodyPart2, "QuikClot"], _patient] call CBA_fnc_targetEvent;
+        ["ace_medical_treatment_bandageLocal", [_patient, _bodyPart2, "Dressing"], _patient] call CBA_fnc_targetEvent;
     };
 
 } forEach GET_BANDAGED_WOUNDS(_patient);

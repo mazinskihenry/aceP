@@ -22,6 +22,7 @@ _unit setVariable [QGVAR(X_sound2), QPATHTOF_SOUND(sounds\heartrate.wav), true];
 
 _unit setVariable [QGVAR(IVplaced), false, true];
 _unit setVariable [QGVAR(IVsite), 0, true];
+_unit setVariable [QGVAR(active), false, true];
 
 _unit setVariable [QGVAR(AEDvehicle), false, true];
 
