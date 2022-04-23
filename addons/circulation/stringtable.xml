@@ -978,7 +978,7 @@
             <Italian>ha utilizzato un DEA-X</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_SUCESSCHANCE_AED_X">
-            <English>Succes chance for AED-X</English>
+            <English>Success chance for AED-X</English>
             <Polish>Szansa na udaną defybrilację dla AED-X</Polish>
             <German>Erfolgsrate für AED-X</German>
             <Spanish>Posibilidad de éxito para AED-X</Spanish>
@@ -990,7 +990,7 @@
             <Italian>Probabilità di successo del DEA-X</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_SUCESSCHANCE_AED">
-            <English>Succes chance for AED</English>
+            <English>Success chance for AED</English>
             <Polish>Szansa na udaną defybrilację dla AED</Polish>
             <German>Erfolgsrate für AED</German>
             <Spanish>Posibilidad de éxito para AED</Spanish>
