@@ -1237,7 +1237,7 @@
             <English>Closed reduction location</English>
         </Key>
         <Key ID="STR_ACEP_circulation_SURGICAL_LOCATION">
-            <English>Closed reduction location</English>
+            <English>Surgical action location</English>
         </Key>
     </Package>
 </Project>
