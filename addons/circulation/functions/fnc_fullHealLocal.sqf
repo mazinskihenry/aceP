@@ -58,6 +58,8 @@ _patient setVariable [QGVAR(alphaAction), 1, true];
 // IV
 _patient setVariable [QGVAR(IVplaced), false, true];
 _patient setVariable [QGVAR(IVsite), 0, true];
+_patient setVariable [QGVAR(IVblock), false, true];
+_patient setVariable [QGVAR(active), false, true];
 
 // AED
 _patient setVariable [QGVAR(AEDvehicle), false, true];

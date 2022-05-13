@@ -18,9 +18,24 @@
 
 params ["_target", "_item", "_medic"];
 
-[_target, _item] call ace_medical_treatment_fnc_addToTriageCard;
-[_target, "activity", LSTRING(push_log), [[_medic] call ace_common_fnc_getName, "TXA"]] call ace_medical_treatment_fnc_addToLog;
-[_target, "TXA", 5, 120, 0, 0, 0] call ace_medical_status_fnc_addMedicationAdjustment;
+private _IVsite = _target getVariable [QGVAR(IVsite), 0];
+
+if (_IVsite > 1) then {
+    private _randomNumber = random 100;
+    private _flush = _target getVariable [QGVAR(IVflush), false];
+    private _block = _target getVariable [QGVAR(IVblock), false];
+
+    if !(_flush) then {
+        if (_randomNumber < GVAR(blockChance)) then {
+            _block = true;
+            _target setVariable [QGVAR(IVblock), true, true];
+        };
+    };
+
+    if (_block) exitWith {};
+
+    _target setVariable [QGVAR(IVflush), false, false];
+};
 
 [{
     private _target = _this select 0;
@@ -32,22 +47,26 @@ params ["_target", "_item", "_medic"];
     _args params ["_target"];
 
     private _openWounds = _target getVariable [VAR_OPEN_WOUNDS, []];
-    private _count = [_target, "TXA"] call ace_medical_status_fnc_getMedicationCount;
     private _alive = alive _target;
 
-    if ((!_alive) || (_count == 0) || (_openWounds isEqualTo [])) exitWith {
+    if ((!_alive) || (_openWounds isEqualTo [])) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
     };
 
-    {
-        _x params ["_id", "_bodyPart", "_amount"];
+    private _random = random 1000;
+    private _ph = (_target getVariable [QGVAR(ph), 1500]) - 500;
 
-        if ((_id != 20) && (_amount > 0)) exitWith {
-            private _part = ALL_BODY_PARTS select _bodyPart;
-            ["ace_medical_treatment_bandageLocal", [_target, _part, "PackingBandage"], _target] call CBA_fnc_targetEvent;
-        };
+    if (_random <= _ph) then {
+        {
+            _x params ["_id", "_bodyPart", "_amount"];
 
-    } forEach _openWounds;
+            if ((_id != 20) && (_amount > 0)) exitWith {
+                private _part = ALL_BODY_PARTS select _bodyPart;
+                ["ace_medical_treatment_bandageLocal", [_target, _part, "PackingBandage"], _target] call CBA_fnc_targetEvent;
+            };
+
+        } forEach _openWounds;
+    };
 
 }, 6, [_target]] call CBA_fnc_addPerFrameHandler;
 

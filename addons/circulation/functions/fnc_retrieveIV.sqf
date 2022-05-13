@@ -30,6 +30,9 @@ if (GVAR(IVreuse) == true) then {
 
 _patient setVariable [QGVAR(IVplaced), false, true];
 _patient setVariable [QGVAR(IVsite), 0, true];
+_patient setVariable [QGVAR(IVblock), false, true];
+_patient setVariable [QGVAR(IVflush), false, true];
+_patient setVariable [QGVAR(active), false, true];
 
 private _totalIvVolume = 0;
 private _saline = 0;

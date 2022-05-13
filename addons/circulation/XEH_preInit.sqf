@@ -10,40 +10,10 @@ PREP_RECOMPILE_END;
 #define CBA_SETTINGS_CAT_F "ACE Pharmacy - Fractures"
 #define CBA_SETTINGS_CAT_A "ACE Pharmacy - AED"
 
-//Activate Naloxone
-[
-	QGVAR(naloxoneActive),
-	"CHECKBOX",
-	[LLSTRING(NALOXONE_ACTIVE)],
-	CBA_SETTINGS_CAT_M,
-	[true],
-	true
-] call CBA_Settings_fnc_init;
-
-//Activate Carbonate
-[
-	QGVAR(carbonateActive),
-	"CHECKBOX",
-	[LLSTRING(CARBONATE_ACTIVE)],
-	CBA_SETTINGS_CAT_M,
-	[true],
-	true
-] call CBA_Settings_fnc_init;
-
-//Activate TXA
-[
-	QGVAR(txaActive),
-	"CHECKBOX",
-	[LLSTRING(TXA_ACTIVE)],
-	CBA_SETTINGS_CAT_M,
-	[true],
-	true
-] call CBA_Settings_fnc_init;
-
 [
 	QGVAR(IVreuse),
 	"CHECKBOX",
-	[LLSTRING(IV_REUSE)],
+	[LLSTRING(IV_REUSE), LLSTRING(IV_REUSE_DESC)],
 	CBA_SETTINGS_CAT_M,
 	[false],
 	true
@@ -52,7 +22,7 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(IVmedic),
 	"LIST",
-	[LLSTRING(IV_MEDIC)],
+	[LLSTRING(IV_MEDIC) ,LLSTRING(IV_MEDIC_DESC)],
 	CBA_SETTINGS_CAT_M,
 	[[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
 	true
@@ -61,7 +31,7 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(IVdropEnable),
 	"CHECKBOX",
-	[LLSTRING(IV_DROP_ENABLE)],
+	[LLSTRING(IV_DROP_ENABLE), LLSTRING(IV_DROP_ENABLE_DESC)],
 	CBA_SETTINGS_CAT_M,
 	[true],
 	true
@@ -70,7 +40,7 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(IVdrop),
 	"SLIDER",
-	[LLSTRING(IV_DROP)],
+	[LLSTRING(IV_DROP), LLSTRING(IV_DROP_DESC)],
 	CBA_SETTINGS_CAT_M,
 	[60, 1200, 600, 0],
 	true
@@ -102,6 +72,34 @@ PREP_RECOMPILE_END;
 	[0.1, 10, 7, 1],
 	true
 ] call CBA_Settings_fnc_init;
+
+[
+	QGVAR(kidneyAction),
+	"CHECKBOX",
+	[LLSTRING(KIDNEY_ACTION), LLSTRING(KIDNEY_ACTION_DESC)],
+	CBA_SETTINGS_CAT_M,
+	[false],
+	true
+] call CBA_Settings_fnc_init;
+
+[
+	QGVAR(blockChance),
+	"SLIDER",
+	[LLSTRING(BLOCK_CHANCE), LLSTRING(BLOCK_CHANCE_DESC)],
+	CBA_SETTINGS_CAT_M,
+	[0, 100, 20, 0],
+	true
+] call CBA_Settings_fnc_init;
+
+[
+	QGVAR(maxStack),
+	"SLIDER",
+	[LLSTRING(MAX_STACK), LLSTRING(MAX_STACK_DESC)],
+	CBA_SETTINGS_CAT_M,
+	[1, 10, 5, 0],
+	true
+] call CBA_Settings_fnc_init;
+
 //location for AED - Defi:
 [
 	QGVAR(useLocation_AED),
@@ -146,7 +144,7 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(distanceLimit_AEDX),
 	"SLIDER",
-	LLSTRING(DISTANCELIMIT_AED_X),
+	[LLSTRING(DISTANCELIMIT_AED_X) ,LLSTRING(DISTANCELIMIT_AED_X_DESC)],
 	CBA_SETTINGS_CAT_A,
 	[2, 100, 30, 0],
 	true
@@ -156,7 +154,7 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(timeLimit_AEDX),
 	"SLIDER",
-	LLSTRING(TIMELIMIT_AED_X),
+	[LLSTRING(TIMELIMIT_AED_X) ,LLSTRING(TIMELIMIT_AED_X_DESC)],
 	CBA_SETTINGS_CAT_A,
 	[60, 14400, 1800, 0],
 	true
@@ -233,7 +231,7 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(compoundChance),
 	"SLIDER",
-	LLSTRING(COMPOUND_FRACTURE),
+	[LLSTRING(COMPOUND_FRACTURE) ,LLSTRING(COMPOUND_FRACTURE_DESC)],
 	CBA_SETTINGS_CAT_F,
 	[0,100,30,0],
 	true

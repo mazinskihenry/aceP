@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="aceP">
     <Package name="circulation">
-        <Key ID="STR_ACEP_circulation_SETTING_ENABLE">
-            <English>ACE-Pharmacy activated?</English>
-            <German>ACE-Kreislauf aktivieren?</German>
-            <Polish>ACE-Czy zaawansowane krążenie ma być włączone?</Polish>
-            <Spanish>¿Activar ACE-Circulación?</Spanish>
-            <Chinese>啟用ACE-血型循環系統？</Chinese>
-            <Czech>ACE-Circulation aktivováno?</Czech>
-            <Korean>ACE 순환계통 시스탬 활성화?</Korean>
-            <French>Ace-Circulation activé?</French>
-            <Turkish>ACE-Sirkülasyon etkinleştirildi mi?</Turkish>
-            <Italian>Attivare ACE-Circolazione?</Italian>
-        </Key>
-        <Key ID="STR_ACEP_circulation_NALOXONE_ACTIVE">
-            <English>Allow players to use Naloxone?</English>
-            <German>Stoffwechselabhängiger Puls?</German>
-            <Polish>Czy tętno ma być zależne od metabolizmu?</Polish>
-            <Spanish>¿Pulso cardíaco depende de metabolismo?</Spanish>
-            <Chinese>依心率來決定代謝率？</Chinese>
-            <Czech>Metabolismus závislý na tepu?</Czech>
-            <Korean>신채대사에 따라 심박수를 결정합니까?</Korean>
-            <French>Le pouls dépend du métabolisme?</French>
-            <Turkish>Metabolizmaya Bağımlı kalp hızı?</Turkish>
-            <Italian>La frequenza cardiaca dipende dal metabolismo?</Italian>
-        </Key>
-        <Key ID="STR_ACEP_circulation_CARBONATE_ACTIVE">
-            <English>Allow players to use Ammonium Carbonate?</English>
-        </Key>
-        <Key ID="STR_ACEP_circulation_TXA_ACTIVE">
-            <English>Allow players to use TXA?</English>
-        </Key>
         <Key ID="STR_ACEP_circulation_IV_MEDIC">
+            <English>IV Placement Level</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_IV_MEDIC_DESC">
             <English>Changes what medical level is required to set IVs/IOs</English>
         </Key>
         <Key ID="STR_ACEP_circulation_IV_DROP_ENABLE">
+            <English>IV/IO Drop</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_IV_DROP_ENABLE_DESC">
             <English>Enables IV/IO drop times</English>
         </Key>
         <Key ID="STR_ACEP_circulation_IV_DROP">
+            <English>IV/IO Drop Times</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_IV_DROP_DESC">
             <English>Changes the time at which IVs/IOs fall out of a patient</English>
         </Key>
         <Key ID="STR_ACEP_circulation_IV_REUSE">
+            <English>IV Reuse</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_IV_REUSE_DESC">
             <English>Sets if IV/IO needles are reusable</English>
         </Key>
         <Key ID="STR_ACEP_circulation_PUSH_TIME">
-            <English>Push time for all IV Medications</English>
+            <English>IV Medication Push Time</English>
         </Key>
         <Key ID="STR_ACEP_circulation_IV_TIME">
             <English>Time to establish IVs</English>
         </Key>
         <Key ID="STR_ACEP_circulation_IO_TIME">
             <English>Time to establish IOs</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_KIDNEY_ACTION">
+            <English>Kidney damage/failure</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_KIDNEY_ACTION_DESC">
+            <English>Enables kidney damage caused by overuse of saline</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_BLOCK_CHANCE">
+            <English>IV Block Chance</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_BLOCK_CHANCE_DESC">
+            <English>Chance of IV blockage due to medication pushes without saline flush</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_MAX_STACK">
+            <English>Maximum Fluid Bag Stack</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_MAX_STACK">
+            <English>The maximum amount of fluid bags that can be stacked to increase IV flow rate</English>
         </Key>
         <Key ID="STR_ACEP_circulation_Painkillers_DescShort">
             <English>Used to suppress pain</English>
@@ -486,6 +486,24 @@
             <Turkish>% 1,% 2 eklendi</Turkish>
             <Italian>%1 ha usato %2</Italian>
         </Key>
+        <Key ID="STR_ACEP_circulation_flush_log">
+            <English>%1 performed a saline flush on %2</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_IVblock_closed">
+            <English>Patient's IV is blocked</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_IVblock_clear">
+            <English>Patient's IV is clear</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_breath_stink">
+            <English>Patient's breath is harsh and metallic</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_breath_mild">
+            <English>Patient's breath is slightly fruity</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_breath_good">
+            <English>Patient's breath is ok</English>
+        </Key>
         <Key ID="STR_ACEP_circulation_IV_16_Display">
             <English>16g IV</English>
             <German>16g IV</German>
@@ -835,7 +853,7 @@
             <Italian>è vuota</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_LOCATION_AED">
-            <English>Locations AED</English>
+            <English>AED Locations</English>
             <German>Orte für AED</German>
             <Chinese>AED使用場合</Chinese>
             <Polish>Miejsca użycia AED</Polish>
@@ -919,7 +937,7 @@
             <Italian>ha utilizzato un DEA-X</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_SUCESSCHANCE_AED_X">
-            <English>Succes chance for AED-X</English>
+            <English>Success chance for AED-X</English>
             <Polish>Szansa na udaną defybrilację dla AED-X</Polish>
             <German>Erfolgsrate für AED-X</German>
             <Spanish>Posibilidad de éxito para AED-X</Spanish>
@@ -931,7 +949,7 @@
             <Italian>Probabilità di successo del DEA-X</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_SUCESSCHANCE_AED">
-            <English>Succes chance for AED</English>
+            <English>Success chance for AED</English>
             <Polish>Szansa na udaną defybrilację dla AED</Polish>
             <German>Erfolgsrate für AED</German>
             <Spanish>Posibilidad de éxito para AED</Spanish>
@@ -967,7 +985,10 @@
             <Italian>Livello d'addestramento richiesto per usare il DEA-X</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_DISTANCELIMIT_AED_X">
-            <English>Distance limit for AED-X in meters</English>
+            <English>AED-X Distance</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_DISTANCELIMIT_AED_X_DESC">
+            <English>Distance limit for AED-X monitor in meters</English>
             <Polish>Limit odległości dla AED-X w metrach</Polish>
             <German>Distanz Grenze für den AED-X in Meter</German>
             <Spanish>Límite de distancia para AED-X en metros</Spanish>
@@ -979,7 +1000,10 @@
             <Italian>Distanza massima in metri per il DEA-X</Italian>
         </Key>
         <Key ID="STR_ACEP_circulation_TIMELIMIT_AED_X">
-            <English>Time limit for monitor of AED-X in seconds</English>
+            <English>AED-X Time Limit</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_TIMELIMIT_AED_X_DESC">
+            <English>Time limit for AED-X monitor in seconds</English>
             <Polish>Limit czasu dla monitora AED-X w sekundach</Polish>
             <German>Zeitbegrenzung für die Werteüberwachung vom AED-X in Sekunden</German>
             <Spanish>Límite de tiempo para monitor de AED-X en segundos</Spanish>
@@ -1144,13 +1168,13 @@
             <English>Regional Anesthetic</English>
         </Key>
         <Key ID="STR_ACEP_circulation_Lidocaine_DescUse">
-            <English>Used as a regional anesthetic for localized proceedures</English>
+            <English>Used as a regional anesthetic for closed reductions</English>
         </Key>
         <Key ID="STR_ACEP_circulation_Etomidate_DescShort">
             <English>General Anesthetic</English>
         </Key>
         <Key ID="STR_ACEP_circulation_Etomidate_DescUse">
-            <English>Used as a general anesthetic for surgical proceedures</English>
+            <English>Used as a general anesthetic for surgical procedures</English>
         </Key>
         <Key ID="STR_ACEP_circulation_Lorazepam_DescShort">
             <English>Sedtation medication</English>
@@ -1206,23 +1230,32 @@
         <Key ID="STR_ACEP_circulation_SIMPLE_FRACTURE">
             <English>Simple fracture chance</English>
         </Key>
+        <Key ID="STR_ACEP_circulation_SIMPLE_FRACTURE_DESC">
+            <English>Sets the chance for simple fractures. Also sets the chance for complex fractures (60% Simple = 40% Complex)</English>
+        </Key>
         <Key ID="STR_ACEP_circulation_COMPOUND_FRACTURE">
             <English>Compound fracture chance</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_COMPOUND_FRACTURE_DESC">
+            <English>Sets the chance for compound fractures. Also sets the chance for comminuted fractures (60% Compound = 40% Comminuted)</English>
         </Key>
         <Key ID="STR_ACEP_circulation_ETOMIDATE_TIME">
             <English>Etomidate cycle timer</English>
         </Key>
+        <Key ID="STR_ACEP_circulation_ETOMIDATE_TIME_DESC">
+            <English>Determines how long each dose of etomidate stays in a patient</English>
+        </Key>
         <Key ID="STR_ACEP_circulation_CLOSED_TIMER">
-            <English>Closed reduction timer</English>
+            <English>Time to perform closed reductions</English>
         </Key>
         <Key ID="STR_ACEP_circulation_OPEN_TIMER">
-            <English>Open reduction timer</English>
+            <English>Time to perform open reductions</English>
         </Key>
         <Key ID="STR_ACEP_circulation_SURGICAL_TIMER">
-            <English>Open reduction timer</English>
+            <English>Time to perform surgical actions</English>
         </Key>
         <Key ID="STR_ACEP_circulation_INCISION_TIMER">
-            <English>Incision timer</English>
+            <English>Time to perform incisions</English>
         </Key>
         <Key ID="STR_ACEP_circulation_FRACTURE_CHECK">
             <English>Fracture check level</English>
@@ -1237,7 +1270,7 @@
             <English>Closed reduction location</English>
         </Key>
         <Key ID="STR_ACEP_circulation_SURGICAL_LOCATION">
-            <English>Closed reduction location</English>
+            <English>Open reduction/Surgical location</English>
         </Key>
     </Package>
 </Project>

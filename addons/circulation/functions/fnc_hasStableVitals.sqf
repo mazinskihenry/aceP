@@ -17,16 +17,13 @@
 
 params ["_unit"];
 
-if (GET_BLOOD_VOLUME(_unit) < BLOOD_VOLUME_CLASS_2_HEMORRHAGE) exitWith { false };
 if IN_CRDC_ARRST(_unit) exitWith { false };
+if (_unit getVariable [QGVAR(sedated), false]) exitWith { false };
 
-private _bloodPressure = GET_BLOOD_PRESSURE(_unit);
-_bloodPressure params ["_bloodPressureL", "_bloodPressureH"];
-if (_bloodPressureL < 50 || {_bloodPressureH < 60}) exitWith { false };
+private _bloodVolume = GET_BLOOD_VOLUME(_unit);
+if (_bloodVolume < 5.1) exitWith { false };
 
 private _heartRate = GET_HEART_RATE(_unit);
 if (_heartRate < 40) exitWith { false };
-
-if (_unit getVariable [QGVAR(sedated), false]) exitWith { false };
 
 true

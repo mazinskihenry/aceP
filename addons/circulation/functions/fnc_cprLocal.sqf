@@ -86,5 +86,6 @@ if (_activity != "") exitWith {
 	[_patient, "activity", _activity, [[_medic, false, true] call ace_common_fnc_getName]] call ace_medical_treatment_fnc_addToLog;
 	if (_success) then {
 		["ace_medical_CPRSucceeded", _patient] call CBA_fnc_localEvent;
+        _patient setVariable [QGVAR(kidneyArrest), false, true];
 	};
 };

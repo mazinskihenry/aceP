@@ -74,7 +74,7 @@ if (_target call ace_common_fnc_isAwake) then {
 };
 
 // Show receiving IV volume remaining
-private _totalIvVolume = 0;
+private _IvVolume = false;
 private _saline = 0;
 private _blood = 0;
 private _plasma = 0;
@@ -92,10 +92,12 @@ private _plasma = 0;
         _plasma = _plasma + _volumeRemaining;
         };
     };
-    _totalIvVolume = _totalIvVolume + _volumeRemaining;
+    _IvVolume = true;
 } forEach (_target getVariable ["ace_medical_ivBags", []]);
 
-if (_totalIvVolume >= 1) then {
+diag_log _IvVolume;
+
+if (_IvVolume) then {
     if (_saline > 1) then {
         _entries pushBack ["Saline: " + (format [localize "STR_ACE_medical_treatment_receivingIvVolume", floor _saline]), [1, 1, 1, 1]];
     };

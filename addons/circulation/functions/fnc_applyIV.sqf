@@ -47,7 +47,9 @@ if (_usedItem isEqualTo "kat_IV_16") then {
 } else {
     _patient setVariable [QGVAR(IVsite), 1, true];
 
-    [_patient, 0.8] call ace_medical_status_fnc_adjustPainLevel;
+    private _count = [_target, "Lidocaine"] call ace_medical_status_fnc_getMedicationCount;
+    private _count2 = [_target, "Morphine"] call ace_medical_status_fnc_getMedicationCount;
+    if (_count == 0 && _count2 == 0) then {[_patient, 0.8] call ace_medical_status_fnc_adjustPainLevel};
 
     [_patient, "activity", LSTRING(iv_log), [[_medic] call ace_common_fnc_getName, "FAST IO"]] call ace_medical_treatment_fnc_addToLog;
     [_patient, "FAST IO"] call ace_medical_treatment_fnc_addToTriageCard;
@@ -66,10 +68,6 @@ if (GVAR(IVdropEnable)) then {
 
             private _bloodBags = _patient getVariable ["ace_medical_ivBags", []];
 
-            if !(_patient getVariable [QGVAR(IVplaced), false]) exitWith {
-                [_idPFH] call CBA_fnc_removePerFrameHandler;
-            };
-
             if !(_patient getVariable [QGVAR(active), false]) exitWith {
                 [_idPFH] call CBA_fnc_removePerFrameHandler;
             };
@@ -86,6 +84,7 @@ if (GVAR(IVdropEnable)) then {
 
                 _patient setVariable [QGVAR(IVplaced), false, true];
                 _patient setVariable [QGVAR(IVsite), 0, true];
+                _patient setVariable [QGVAR(active), false, true];
             };
         }, GVAR(IVdrop), [_patient]] call CBA_fnc_addPerFrameHandler;
 

@@ -16,3 +16,5 @@
 ["treatmentDebridementClear", {_this call FUNC(debridementClearLocal)}] call CBA_fnc_addEventHandler;
 ["treatmentDebridementMinor", {_this call FUNC(debridementMinorLocal)}] call CBA_fnc_addEventHandler;
 ["treatmentDialysis", {_this call FUNC(treatmentAdvanced_DialysisLocal)}] call CBA_fnc_addEventHandler;
+["treatmentFlush", {_this call FUNC(treatmentAdvanced_FlushLocal)}] call CBA_fnc_addEventHandler;
+
