@@ -42,7 +42,7 @@ switch (_reviveObject) do {
 
 		// Check if medic class based CPR chances are enabled
 		if (GVAR(enable_CPR_Chances)) then {
-			switch (_medic getVariable ["ace_medical_medicClass",0]) do {
+			switch (_medic getVariable [QACEGVAR(medical,medicClass),0]) do {
 				case 0: {
 					_success = GVAR(CPR_Chance_Default) call _randomSuccess;
 				};
@@ -60,8 +60,8 @@ switch (_reviveObject) do {
 
 				BLOOD_VOLUME_CLASS_* and GET_BLOOD_VOLUME() macros are imported from the ACE medical_engine script macros
 			*/
-			private _min = ace_medical_treatment_cprSuccessChanceMin;
-			private _max = ace_medical_treatment_cprSuccessChanceMax;
+			private _min = ACEGVAR(medical_treatment,cprSuccessChanceMin);
+            private _max = ACEGVAR(medical_treatment,cprSuccessChanceMax);
 			private _chance = linearConversion [BLOOD_VOLUME_CLASS_4_HEMORRHAGE, BLOOD_VOLUME_CLASS_2_HEMORRHAGE, GET_BLOOD_VOLUME(_patient), _min, _max, true];
 			// ACE Medical settings are percentages (decimals, 0 <= x <= 1) instead of integers
 			_success = (random 1) < _chance;
@@ -83,9 +83,9 @@ switch (_reviveObject) do {
 
 // If an activity was performed, log it and check if CPR was successful.
 if (_activity != "") exitWith {
-	[_patient, "activity", _activity, [[_medic, false, true] call ace_common_fnc_getName]] call ace_medical_treatment_fnc_addToLog;
+	[_patient, "activity", _activity, [[_medic, false, true] call ACEFUNC(common,getName)]] call ace_medical_treatment_fnc_addToLog;
 	if (_success) then {
-		["ace_medical_CPRSucceeded", _patient] call CBA_fnc_localEvent;
+        [QACEGVAR(medical,CPRSucceeded), _patient] call CBA_fnc_localEvent;
         _patient setVariable [QGVAR(kidneyArrest), false, true];
 	};
 };

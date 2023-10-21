@@ -1,6 +1,7 @@
 #include "script_component.hpp"
 
 ["treatmentCarbonate", {_this call FUNC(treatmentAdvanced_CarbonateLocal)}] call CBA_fnc_addEventHandler;
+["treatmentCoagulation", {_this call FUNC(coagulationLocal)}] call CBA_fnc_addEventHandler;
 ["treatmentKetamine", {_this call FUNC(treatmentAdvanced_KetamineLocal)}] call CBA_fnc_addEventHandler;
 ["treatmentNaloxone", {_this call FUNC(treatmentAdvanced_NaloxoneLocal)}] call CBA_fnc_addEventHandler;
 ["treatmentLido", {_this call FUNC(treatmentAdvanced_LidoLocal)}] call CBA_fnc_addEventHandler;
@@ -17,4 +18,4 @@
 ["treatmentDebridementMinor", {_this call FUNC(debridementMinorLocal)}] call CBA_fnc_addEventHandler;
 ["treatmentDialysis", {_this call FUNC(treatmentAdvanced_DialysisLocal)}] call CBA_fnc_addEventHandler;
 ["treatmentFlush", {_this call FUNC(treatmentAdvanced_FlushLocal)}] call CBA_fnc_addEventHandler;
-
+//["treatmentKetamine", {_this call FUNC(treatmentAdvanced_KetamineLocal)}] call CBA_fnc_addEventHandler;

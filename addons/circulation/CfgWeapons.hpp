@@ -26,6 +26,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Defibrillator_F.p3d";
         descriptionShort = "$STR_ACEP_circulation_AED_DESCRIPTION";
         descriptionUse = "$STR_ACEP_circulation_AED_DESCRIPTION";
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 30;
         };
@@ -37,6 +38,7 @@ class CfgWeapons {
         model = QPATHTOF(models\aedx\aedx.p3d);
         descriptionShort = CSTRING(X_Desc);
         descriptionUse = CSTRING(X_Desc);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 100;
         };
@@ -48,6 +50,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(IV_DescShort);
         descriptionUse = CSTRING(IV_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.1;
         }; 
@@ -59,6 +62,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(IO_DescShort);
         descriptionUse = CSTRING(IV_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.1;
         }; 
@@ -70,6 +74,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Naloxone_DescShort);
         descriptionUse = CSTRING(Naloxone_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
@@ -81,6 +86,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(TXA_DescShort);
         descriptionUse = CSTRING(TXA_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
@@ -92,6 +98,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(EACA_DescShort);
         descriptionUse = CSTRING(EACA_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         };
@@ -103,6 +110,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Norep_DescShort);
         descriptionUse = CSTRING(Norep_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
@@ -114,9 +122,22 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Phenyl_DescShort);
         descriptionUse = CSTRING(Phenyl_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
+    };
+    class kat_phenylephrine_inject: ACE_ItemCore {
+        scope = 2;
+        displayName = "Phenylephrine Autoinjector";
+        picture = QPATHTOF(ui\atropine_ca.paa);
+        model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
+        descriptionShort = CSTRING(Phenyl_DescShort);
+        descriptionUse = CSTRING(Phenyl_DescUse);
+        ACE_isMedicalItem = 1;
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 0.2;
+        };
     };
     class kat_nitroglycerin: ACE_ItemCore {
         scope = 2;
@@ -125,10 +146,21 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Nitro_DescShort);
         descriptionUse = CSTRING(Nitro_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
     };
+    /*class kat_ketamine: ACE_ItemCore {
+        scope = 2;
+        displayName = CSTRING(Ketamine_Box_Display);
+        picture = QPATHTOF(ui\icon_Ketamine.paa);
+        model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
+        descriptionShort = CSTRING(Ketamine_DescShort);
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 0.5;
+        };
+    };*/
     class kat_lidocaine: ACE_ItemCore {
         scope = 2;
         displayName = "Lidocaine";
@@ -136,6 +168,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Lidocaine_DescShort);
         descriptionUse = CSTRING(Lidocaine_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
@@ -147,6 +180,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Etomidate_DescShort);
         descriptionUse = CSTRING(Etomidate_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
@@ -158,6 +192,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Lorazepam_DescShort);
         descriptionUse = CSTRING(Lorazepam_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
@@ -169,6 +204,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Flumazenil_DescShort);
         descriptionUse = CSTRING(Flumazenil_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
@@ -180,6 +216,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Scalpel_DescShort);
         descriptionUse = CSTRING(Scalpel_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.2;
         }; 
@@ -191,6 +228,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Retractor_DescShort);
         descriptionUse = CSTRING(Retractor_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.5;
         }; 
@@ -202,6 +240,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Clamp_DescShort);
         descriptionUse = CSTRING(Clamp_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.5;
         }; 
@@ -213,6 +252,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Plate_DescShort);
         descriptionUse = CSTRING(Plate_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 0.3;
         }; 
@@ -224,6 +264,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
         descriptionShort = CSTRING(Vacuum_DescShort);
         descriptionUse = CSTRING(Vacuum_DescUse);
+        ACE_isMedicalItem = 1;
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 5;
         };

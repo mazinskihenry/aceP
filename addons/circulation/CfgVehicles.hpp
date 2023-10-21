@@ -39,6 +39,11 @@ class CfgVehicles {
         class TransportItems {
             MACRO_ADDITEM(kat_AED,1);
         };
+
+        ACEGVAR(dragging,canDrag) = 1;
+        ACEGVAR(dragging,canCarry) = 1;
+        ACEGVAR(dragging,dragPosition)[] = {0,1.1,1};
+        ACEGVAR(dragging,carryPosition)[] = {0,1.1,1};
     };
     
     class kat_X_AEDItem: kat_AEDItem {

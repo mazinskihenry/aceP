@@ -16,12 +16,12 @@
  * Public: Yes
  */
 
-params ["_medic", "_patient"];
+params ["_medic", "_patient", "_bodyPart"];
 
 if (local _patient) then {
-    ["treatmentEACA", [_patient, "EACA", _medic]] call CBA_fnc_localEvent;
+    ["treatmentEACA", [_patient, "EACA", _medic, _bodyPart]] call CBA_fnc_localEvent;
 } else {
-    ["treatmentEACA", [_patient, "EACA", _medic], _patient] call CBA_fnc_targetEvent;
+    ["treatmentEACA", [_patient, "EACA", _medic, _bodyPart], _patient] call CBA_fnc_targetEvent;
 };
 
 true;

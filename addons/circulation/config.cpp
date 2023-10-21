@@ -23,6 +23,7 @@ class CfgPatches {
             "kat_norepinephrine",
             "kat_phenylephrine",
             "kat_nitroglycerin",
+            "kat_ketamine",
             "kat_etomidate",
             "kat_lidocaine",
             "kat_lorazepam",

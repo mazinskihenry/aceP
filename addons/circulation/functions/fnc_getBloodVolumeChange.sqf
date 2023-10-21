@@ -21,49 +21,39 @@ params ["_unit", "_deltaT", "_syncValues"];
 
 private _bloodLoss = [_unit] call ace_medical_status_fnc_getBloodLoss;
 private _bloodVolumeChange = -_deltaT * _bloodLoss;
-private _bagChange = 0;
-private _bloodBags = _unit getVariable ["ace_medical_ivBags", []];
 
-if !(_bloodBags isEqualTo []) then {
-    private _firstBag = _bloodBags select 0;
-    _firstBag params ["_bagVolumeRemaining", "_type", "_bodyPart"];
-
-    if (GET_TOURNIQUETS(_unit) select _bodyPart != 0) exitWith {};
-
-    if (_unit getVariable [QGVAR(IVblock), false]) exitWith {};
-
-    private _count = (count _bloodBags) min GVAR(maxStack);
-    private _flow = ace_medical_ivFlowRate;
-    private _alpha = _unit getVariable [QGVAR(alphaAction), 1];
-    private _ph = _unit getVariable [QGVAR(ph), 1000];
+if (!isNil {_unit getVariable ["ace_medical_ivBags",[]]}) then {
+    private _bloodBags = _unit getVariable ["ace_medical_ivBags", []];
+    private _tourniquets = GET_TOURNIQUETS(_unit);
+    private _flowCalculation = ace_medical_ivFlowRate * (_unit getVariable [QGVAR(alphaAction), 1]) * _deltaT * 4.16;
 
     if (GET_HEART_RATE(_unit) < 20) then {
-        _flow = _flow / 2;
+        _flowCalculation = _flowCalculation / 1.5;
     };
 
-    _bagChange = (_deltaT * _flow * 4.16 * _alpha * _count) min _bagVolumeRemaining; // absolute value of the change in miliLiters
+    _bloodBags = _bloodBags apply {
+        _x params ["_bagVolumeRemaining", "_type", "_bodyPart"];
 
-    if (_type isEqualTo "Saline") then {
-        _ph = (_ph - _bagChange) max 0;
-        _unit setVariable [QGVAR(ph), _ph, true];
-    } else {
-        _ph = (_ph + _bagChange) min 1000;
-        _unit setVariable [QGVAR(ph), _ph, true];
-
-        _bagChange = _bagChange * 0.8;
-    };
-
-    _bagVolumeRemaining = _bagVolumeRemaining - _bagChange;
-
-    if (_bagVolumeRemaining < 0.01) then {
-        _bloodBags deleteAt 0;
-        if (_bloodBags isEqualTo []) then {
-            _unit setVariable ["ace_medical_ivBags", nil, true]; // no bags left - clear variable (always globaly sync this)
+        if (_tourniquets select _bodyPart isEqualTo 0) then {
+            private _bagChange = _flowCalculation min _bagVolumeRemaining; // absolute value of the change in miliLiters
+            _bagVolumeRemaining = _bagVolumeRemaining - _bagChange;
+            _bloodVolumeChange = _bloodVolumeChange + (_bagChange / 1000);
         };
+
+        if (_bagVolumeRemaining < 0.01) then {
+            []
+        } else {
+            [_bagVolumeRemaining, _type, _bodyPart]
+        };
+    };
+
+    _bloodBags = _bloodBags - [[]]; // remove empty bags
+
+    if (_bloodBags isEqualTo []) then {
+        _unit setVariable ["ace_medical_ivBags", nil, true]; // no bags left - clear variable (always globaly sync this)
     } else {
-        _bloodBags set [0, [_bagVolumeRemaining, _type, _bodyPart]];
         _unit setVariable ["ace_medical_ivBags", _bloodBags, _syncValues];
     };
 };
 
-_bloodVolumeChange + (_bagChange / 1000)
+_bloodVolumeChange

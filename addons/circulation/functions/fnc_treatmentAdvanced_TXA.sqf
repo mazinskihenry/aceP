@@ -16,12 +16,12 @@
  * Public: Yes
  */
 
-params ["_medic", "_patient"];
+params ["_medic", "_patient", "_bodyPart", "_classname", "", "_usedItem"];
 
 if (local _patient) then {
-    ["treatmentTXA", [_patient, "TXA", _medic]] call CBA_fnc_localEvent;
+    ["treatmentTXA", [_patient, _bodyPart]] call CBA_fnc_localEvent;
 } else {
-    ["treatmentTXA", [_patient, "TXA", _medic], _patient] call CBA_fnc_targetEvent;
+    ["treatmentTXA", [_patient, _bodyPart], _patient] call CBA_fnc_targetEvent;
 };
 
 true;

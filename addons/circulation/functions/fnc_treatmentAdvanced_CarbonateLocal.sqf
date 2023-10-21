@@ -22,8 +22,8 @@ params ["_medic", "_target", "_item"];
 private _bloodPressure = [_target] call ace_medical_status_fnc_getBloodPressure;
 _bloodPressureH = _bloodPressure select 1;
 
-if (_bloodPressureH >= 110 && _bloodPressureH <= 130) then {
-    [_target, false] call ace_medical_status_fnc_setUnconsciousState;
+if (_bloodPressureH >= 100 && _bloodPressureH <= 140) then {
+    [_patient, false] call ACEFUNC(medical,setUnconscious);
 };
 
 [_target, "Carbonate"] call ace_medical_treatment_fnc_addToTriageCard;

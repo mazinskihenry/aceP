@@ -23,13 +23,7 @@ params [
 	["_reviveObject","CPR",[""]]
 ];
 
-//pain will be added to all units standing too close to caller or target.
-if (vehicle _patient isEqualTo _patient) then {
-	private _bystanders = ( allUnits select {_x distance _patient < 1.7} ) - [_medic];
-	{ [_x, 0.2] remoteExec ["ace_medical_fnc_adjustPainLevel",_x]; nil; } count _bystanders;
-};
-
-_patient setVariable ["ace_medical_CPR_provider", objNull, true];
+_patient setVariable [QACEGVAR(medical,CPR_provider), objNull, true];
 
 if (GET_HEART_RATE(_patient) > 60) exitWith {
     _patient setVariable [VAR_HEART_RATE, 0, true];
@@ -37,5 +31,5 @@ if (GET_HEART_RATE(_patient) > 60) exitWith {
 };
 
 if (alive _patient && {_patient getVariable ["ace_medical_inCardiacArrest", false]}) then {
-    ["ace_medical_treatment_cprLocal", [_medic, _patient, _reviveObject], _patient] call CBA_fnc_targetEvent;
+    [QACEGVAR(medical_treatment,cprLocal), [_medic, _patient, _defibType], _patient] call CBA_fnc_targetEvent;
 };

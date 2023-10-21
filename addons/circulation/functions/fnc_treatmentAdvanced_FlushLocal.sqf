@@ -16,8 +16,13 @@
  * Public: No
  */
 
-params ["_medic", "_patient"];
+params ["_medic", "_patient", "_bodyPart"];
 
-_patient setVariable [QGVAR(IVflush), true, true];
+private _partIndex = ALL_BODY_PARTS find toLower _bodyPart;
+private _IVarray = _patient getVariable [QGVAR(IV), [0,0,0,0,0,0]];
+private _IVactual = _IVarray select _partIndex;
+
+_IVarray set [_partIndex, 4];
+_patient setVariable [QGVAR(IV), _IVarray, true];
 
 [_patient, "activity", LSTRING(flush_log), [[_medic] call ace_common_fnc_getName]] call ace_medical_treatment_fnc_addToLog;

@@ -1164,6 +1164,15 @@
         <Key ID="STR_ACEP_circulation_debridement_fail">
             <English>Wound Dressing Failed</English>
         </Key>
+        <Key ID="STR_ACEP_circulation_Take_Ketamine">
+            <English>Push Ketamine</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Ketamine_Box_Display">
+            <English>Ketamine</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_Ketamine_DescShort">
+            <English>Suppresses pain and causes halucinations</English>
+        </Key>
         <Key ID="STR_ACEP_circulation_Lidocaine_DescShort">
             <English>Regional Anesthetic</English>
         </Key>
@@ -1271,6 +1280,15 @@
         </Key>
         <Key ID="STR_ACEP_circulation_SURGICAL_LOCATION">
             <English>Open reduction/Surgical location</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_FACTOR_DRUGS">
+            <English>Factor Drug Medical Level</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_VASO_DRUGS">
+            <English>Vaso Drug Medical Level</English>
+        </Key>
+        <Key ID="STR_ACEP_circulation_SURGICAL_DRUGS">
+            <English>Surgical Drug Medical Level</English>
         </Key>
     </Package>
 </Project>

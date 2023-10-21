@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
- * Author: Glowbal, mharis001
- * Removes the tourniquet from the patient on the given body part.
+ * Author: Mazinski.H
+ * Removes the IV from the patient on the given body part.
  * Note: Patient may not be local
  *
  * Arguments:
@@ -10,10 +10,10 @@
  * 2: Body Part <STRING>
  *
  * Return Value:
- * None
+ * Remove IV <BOOLEAN>
  *
  * Example:
- * [player, cursorObject, "LeftLeg"] call ace_medical_treatment_fnc_tourniquetRemove
+ * [player, cursorObject, "LeftLeg"] call kat_pharma_fnc_removeIV;
  *
  * Public: No
  */
@@ -21,8 +21,12 @@
 params ["_medic", "_patient", "_bodyPart"];
 
 private _partIndex = ALL_BODY_PARTS find toLower _bodyPart;
-private _IV = _patient getVariable [QGVAR(IVsite), 0];
+private _IVarray = _patient getVariable [QGVAR(IV), [0,0,0,0,0,0]];
+private _IVactual = _IVarray select _partIndex;
+private _return = false;
 
-if ((_IV == _partIndex) && (_patient getVariable [QGVAR(IVplaced), false])) exitWith {true};
+if (_IVactual > 0) then {
+    _return = true;
+};
 
-false
+_return

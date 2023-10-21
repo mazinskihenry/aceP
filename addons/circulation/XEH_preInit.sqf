@@ -83,6 +83,15 @@ PREP_RECOMPILE_END;
 ] call CBA_Settings_fnc_init;
 
 [
+	QGVAR(aiEnableAdvanced),
+	"CHECKBOX",
+	["Enable Advanced Medical for AI", "Enables kidney actions and blood pressure medications for AI"],
+	CBA_SETTINGS_CAT_M,
+	[false],
+	true
+] call CBA_Settings_fnc_init;
+
+[
 	QGVAR(blockChance),
 	"SLIDER",
 	[LLSTRING(BLOCK_CHANCE), LLSTRING(BLOCK_CHANCE_DESC)],
@@ -283,11 +292,11 @@ PREP_RECOMPILE_END;
 ] call CBA_Settings_fnc_init;
 
 [
-	QGVAR(fractureCheck),
+	QGVAR(fractureCheck_Level),
 	"LIST",
 	LLSTRING(FRACTURE_CHECK),
 	CBA_SETTINGS_CAT_F,
-	[[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
+	[[0, 1, 2], ["Anyone", "Medics", "Doctors"], 0],
 	true
 ] call CBA_Settings_fnc_init;
 
@@ -296,7 +305,7 @@ PREP_RECOMPILE_END;
 	"LIST",
 	LLSTRING(CLOSED_REDUCTION),
 	CBA_SETTINGS_CAT_F,
-	[[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
+	[[0, 1, 2], ["Anyone", "Medics", "Doctors"], 1],
 	true
 ] call CBA_Settings_fnc_init;
 
@@ -324,6 +333,42 @@ PREP_RECOMPILE_END;
 	LLSTRING(SURGICAL_LOCATION),
 	CBA_SETTINGS_CAT_F,
 	[[0,1,2,3],["STR_ACE_Common_Anywhere", "STR_ACE_Common_Vehicle", "STR_ACE_Medical_Treatment_MedicalFacilities", "STR_ACE_Medical_Treatment_VehiclesAndFacilities"],3],
+	true
+] call CBA_Settings_fnc_init;
+
+[
+	QGVAR(factorDrugs),
+	"LIST",
+	LLSTRING(FACTOR_DRUGS),
+	CBA_SETTINGS_CAT_M,
+	[[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
+	true
+] call CBA_Settings_fnc_init;
+
+[
+	QGVAR(vasoDrugs),
+	"LIST",
+	LLSTRING(VASO_DRUGS),
+	CBA_SETTINGS_CAT_M,
+	[[0, 1, 2], ["Anyone", "Medics", "Doctors"], 1],
+	true
+] call CBA_Settings_fnc_init;
+
+[
+	QGVAR(surgicalDrugs),
+	"LIST",
+	LLSTRING(SURGICAL_DRUGS),
+	CBA_SETTINGS_CAT_M,
+	[[0, 1, 2], ["Anyone", "Medics", "Doctors"], 2],
+	true
+] call CBA_Settings_fnc_init;
+
+[
+	QGVAR(coagulation),
+	"CHECKBOX",
+	"Enable Coagulation",
+	CBA_SETTINGS_CAT_M,
+	[true],
 	true
 ] call CBA_Settings_fnc_init;
 

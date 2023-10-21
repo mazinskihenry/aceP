@@ -16,58 +16,66 @@
  * Public: No
  */
 
-params ["_target", "_item", "_medic"];
+params ["_patient", "_bodyPart"];
 
-private _IVsite = _target getVariable [QGVAR(IVsite), 0];
+private _partIndex = ALL_BODY_PARTS find toLower _bodyPart;
+private _IVarray = _patient getVariable [QGVAR(IV), [0,0,0,0,0,0]];
+private _IVactual = _IVarray select _partIndex;
+private _block = false;
 
-if (_IVsite > 1) then {
+if (_IVactual > 1) then {
     private _randomNumber = random 100;
-    private _flush = _target getVariable [QGVAR(IVflush), false];
-    private _block = _target getVariable [QGVAR(IVblock), false];
 
-    if !(_flush) then {
+    if (_IVactual != 4) exitWith {
         if (_randomNumber < GVAR(blockChance)) then {
+            _IVarray set [_partIndex, 3];
+            _patient setVariable [QGVAR(IV), _IVarray, true];
             _block = true;
-            _target setVariable [QGVAR(IVblock), true, true];
         };
     };
 
-    if (_block) exitWith {};
-
-    _target setVariable [QGVAR(IVflush), false, false];
+    _IVarray set [_partIndex, 2];
+    _patient setVariable [QGVAR(IV), _IVarray, true];
 };
 
-[{
-    private _target = _this select 0;
-    _target setVariable [QGVAR(TXA), 1, true];
-}, [_target], 180] call CBA_fnc_waitAndExecute;
+if !(GVAR(coagulation)) then {
+    if !(_block) then {
+        [{
+            params ["_args", "_idPFH"];
+            _args params ["_patient"];
+            private _openWounds = GET_OPEN_WOUNDS(_patient);
+            private _alive = alive _patient;
+            private _exit = true;
 
-[{
-    params ["_args", "_idPFH"];
-    _args params ["_target"];
-
-    private _openWounds = _target getVariable [VAR_OPEN_WOUNDS, []];
-    private _alive = alive _target;
-
-    if ((!_alive) || (_openWounds isEqualTo [])) exitWith {
-        [_idPFH] call CBA_fnc_removePerFrameHandler;
-    };
-
-    private _random = random 1000;
-    private _ph = (_target getVariable [QGVAR(ph), 1500]) - 500;
-
-    if (_random <= _ph) then {
-        {
-            _x params ["_id", "_bodyPart", "_amount"];
-
-            if ((_id != 20) && (_amount > 0)) exitWith {
-                private _part = ALL_BODY_PARTS select _bodyPart;
-                ["ace_medical_treatment_bandageLocal", [_target, _part, "PackingBandage"], _target] call CBA_fnc_targetEvent;
+            if !(GVAR(kidneyAction)) then {
+                _patient setVariable [QGVAR(pH), 1500, true];
             };
 
-        } forEach _openWounds;
-    };
+            private _random = random 1000;
+            private _ph = (_patient getVariable [QGVAR(pH), 1500]) - 500;
 
-}, 6, [_target]] call CBA_fnc_addPerFrameHandler;
+            if (_random <= _ph) then {
+                {
+                    private _part = _x;
+                    if ([_patient,_x] call ACEFUNC(medical_treatment,hasTourniquetAppliedTo)) then {
+                        continue;
+                    };
+                    {
+                        _x params ["", "_amountOf", "_bleeding"];
+                        if (_amountOf * _bleeding > 0) exitWith {
+                            [QACEGVAR(medical_treatment,bandageLocal), [_patient, _part, "PackingBandage"], _patient] call CBA_fnc_targetEvent;
+                            _exit = false;
+                        };
+                    } forEach _y;
+                } forEach _openWounds;
+            };
+
+            if ((!_alive) || (_exit)) exitWith {
+                [_idPFH] call CBA_fnc_removePerFrameHandler;
+            };
+
+        }, 6, [_patient]] call CBA_fnc_addPerFrameHandler;
+    };
+};
 
 true
